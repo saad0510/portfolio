@@ -8,7 +8,7 @@ class AppColors {
   static final colorScheme = ColorScheme(
     brightness: Brightness.light,
     // primary
-    primary: purple.shade500,
+    primary: primary,
     onPrimary: white,
     primaryContainer: purple.shade25,
     onPrimaryContainer: gray.shade600,
@@ -16,8 +16,8 @@ class AppColors {
     secondary: Colors.transparent,
     onSecondary: Colors.transparent,
     secondaryContainer: gray.shade100,
-    // surface
-    surface: gray.shade100,
+    // background
+    surface: white,
     onSurface: gray.shade600,
     // errors
     error: red.shade600,
@@ -26,6 +26,7 @@ class AppColors {
     onErrorContainer: red.shade600,
   );
 
+  static final primary = purple.shade500;
   static const white = Color(0xFFFFFFFF);
 
   static const gray = MaterialColor(

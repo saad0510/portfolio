@@ -23,8 +23,6 @@ extension TextColorsExt on TextStyle? {
 }
 
 extension TextWeightsExt on TextStyle? {
-  TextStyle? get medium => weighted(FontWeight.w500);
-
   TextStyle? weighted(FontWeight fontWeight) => this?.copyWith(fontWeight: fontWeight);
 }
 

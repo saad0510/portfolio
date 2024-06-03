@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 enum Sizes {
   s120(120),
   s100(100),
+  s64(64),
   s32(32),
   s24(24),
   s16(16),

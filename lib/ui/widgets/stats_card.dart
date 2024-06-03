@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme/sizes.dart';
-import '../../extensions/theme_ext.dart';
+import '../../theme/sizes.dart';
+import '../../core/extensions/theme_ext.dart';
 
 class StatsCard extends StatelessWidget {
   const StatsCard({

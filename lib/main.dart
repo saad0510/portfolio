@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'controllers/navigation_controller.dart';
 import 'core/constants.dart';
-import 'core/ui/screens/home_screen.dart';
+import 'ui/screens/home_screen.dart';
 import 'theme/app_theme.dart';
 
 void main() {

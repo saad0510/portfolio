@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme/sizes.dart';
+import '../../theme/sizes.dart';
 import '../sections/app_navigation_bar.dart';
 import '../sections/introduction_section.dart';
 

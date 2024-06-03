@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controllers/navigation_controller.dart';
-import '../../../entities/nav_items.dart';
-import '../../../theme/app_buttons_styles.dart';
-import '../../../theme/sizes.dart';
+import '../../controllers/navigation_controller.dart';
+import '../../entities/nav_items.dart';
+import '../../theme/app_buttons_styles.dart';
+import '../../theme/sizes.dart';
 
 class AppNavigationBar extends StatelessWidget implements PreferredSizeWidget {
   const AppNavigationBar({super.key});

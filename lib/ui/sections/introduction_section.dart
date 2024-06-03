@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme/app_buttons_styles.dart';
-import '../../../theme/sizes.dart';
-import '../../extensions/theme_ext.dart';
+import '../../theme/app_buttons_styles.dart';
+import '../../theme/sizes.dart';
+import '../../core/extensions/theme_ext.dart';
 import '../widgets/stats_card.dart';
 
 class IntroductionSection extends StatelessWidget {

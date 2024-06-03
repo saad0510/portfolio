@@ -16,8 +16,18 @@ extension ContextAccessExt on BuildContext {
   TextTheme get typography => Theme.of(this).textTheme;
 }
 
-extension TextStylesExt on TextStyle? {
-  TextStyle? get primary => this?.copyWith(color: AppColors.primary);
+extension TextColorsExt on TextStyle? {
+  TextStyle? get primary => colored(AppColors.primary);
 
-  TextStyle? get medium => this?.copyWith(fontWeight: FontWeight.w500);
+  TextStyle? colored(Color color) => this?.copyWith(color: color);
+}
+
+extension TextWeightsExt on TextStyle? {
+  TextStyle? get medium => weighted(FontWeight.w500);
+
+  TextStyle? weighted(FontWeight fontWeight) => this?.copyWith(fontWeight: fontWeight);
+}
+
+extension TypographyExt on TextStyle? {
+  TextStyle? get removeFont => this?.copyWith(fontFamily: '');
 }

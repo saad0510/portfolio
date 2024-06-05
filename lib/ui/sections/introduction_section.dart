@@ -1,127 +1,131 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../core/app_assets.dart';
+import '../../core/constants.dart';
 import '../../core/extensions/theme_ext.dart';
-import '../../theme/app_buttons_styles.dart';
+import '../../core/utils/semi_circle_clipper.dart';
 import '../../theme/sizes.dart';
-import '../widgets/stats_card.dart';
+import 'base_section.dart';
 
 class IntroductionSection extends StatelessWidget {
   const IntroductionSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Expanded(
-          child: Padding(
-            padding: Sizes.s120.padX,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      const TextSpan(
-                        text: 'Hi! I Am\n',
-                      ),
-                      TextSpan(
-                        text: 'Saad',
-                        style: TextStyle(color: context.colors.primary),
-                      ),
-                      const TextSpan(
-                        text: ' Bin Khalid',
-                      ),
-                    ],
-                  ),
-                  style: context.typography.displaySmall,
-                ),
-                Sizes.s32.spaceY,
-                Text(
-                  'I am a web designer creating visually stunning and user-friendly websites. My portfolio showcases my ability.',
-                  style: context.typography.bodyLarge,
-                ),
-                Sizes.s32.spaceY,
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: const Text('Hire Me'),
-                    ),
-                    Sizes.s12.spaceX,
-                    OutlinedButton(
-                      style: AppButtonsStyles.secondaryOutlinedButton,
-                      onPressed: () {},
-                      child: const Text('Projects'),
-                    ),
-                  ],
-                ),
-                Sizes.s32.spaceY,
-                Padding(
-                  padding: Sizes.s24.pad,
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 3,
-                        child: StatsCard(
-                          title: 'Years of Experience',
-                          value: '03',
-                        ),
-                      ),
-                      Sizes.s16.spaceX,
-                      const Expanded(
-                        flex: 2,
-                        child: StatsCard(
-                          title: 'Projects Done',
-                          value: '30',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: Sizes.s24.pad,
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        flex: 3,
-                        child: StatsCard(
-                          title: 'Happy Customers',
-                          value: '23',
-                        ),
-                      ),
-                      Sizes.s16.spaceX,
-                      const Expanded(
-                        flex: 2,
-                        child: StatsCard(
-                          title: 'Award Wins',
-                          value: '03',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+    if (ResponsiveBreakpoints.of(context).smallerOrEqualTo('SEMI_DESKTOP')) {
+      return BaseSection(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const IntroductionText(isBreakPoint: true),
+            Sizes.s64.spaceY,
+            const ClipPath(
+              clipper: SemiCircleClipper(curveFactor: 2),
+              child: IntroductionImage(isBreakPoint: true),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return BaseSection(
+      height: 700,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Expanded(
+            child: IntroductionText(isBreakPoint: false),
+          ),
+          Sizes.s100.spaceX,
+          const SizedBox(
+            width: 350,
+            child: ClipPath(
+              clipper: SemiCircleClipper(curveFactor: 1.7),
+              child: IntroductionImage(),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class IntroductionText extends StatelessWidget {
+  const IntroductionText({
+    super.key,
+    this.isBreakPoint = false,
+  });
+
+  final bool isBreakPoint;
+
+  @override
+  Widget build(BuildContext context) {
+    final textAlign = isBreakPoint ? TextAlign.center : TextAlign.left;
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          Constants.personalName.toUpperCase(),
+          textAlign: textAlign,
+          style: context.typography.labelSmall?.copyWith(
+            color: context.colors.primary,
+            letterSpacing: 2,
+            fontWeight: FontWeight.w500,
+          ),
         ),
-        Expanded(
-          child: Container(
-            height: 650,
-            decoration: BoxDecoration(
-              color: context.colors.secondaryContainer,
-              image: const DecorationImage(
-                image: AssetImage(AppAssets.me_with_logos),
-                fit: BoxFit.contain,
-                alignment: Alignment.bottomCenter,
+        Sizes.s16.spaceY,
+        Text.rich(
+          TextSpan(
+            children: [
+              const TextSpan(
+                text: 'Full Stack\n',
               ),
-            ),
+              TextSpan(
+                text: 'Flutter App',
+                style: TextStyle(color: context.colors.primary),
+              ),
+              const TextSpan(
+                text: ' Developer',
+              ),
+            ],
+          ),
+          style: context.typography.displaySmall,
+          textAlign: textAlign,
+        ),
+        Sizes.s24.spaceY,
+        Sizes.s32.spaceY,
+        Align(
+          alignment: isBreakPoint ? Alignment.center : Alignment.centerLeft,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: const Text('Let\'s Work Together'),
           ),
         ),
       ],
+    );
+  }
+}
+
+class IntroductionImage extends StatelessWidget {
+  const IntroductionImage({
+    super.key,
+    this.isBreakPoint = false,
+  });
+
+  final bool isBreakPoint;
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      AppAssets.me,
+      width: double.infinity,
+      height: isBreakPoint ? null : double.infinity,
+      fit: isBreakPoint ? BoxFit.fitWidth : BoxFit.fitHeight,
+      alignment: Alignment.topCenter,
+      cacheHeight: 1080,
     );
   }
 }

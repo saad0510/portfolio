@@ -37,6 +37,7 @@ class AppButtonsStyles {
       backgroundColor: AppColors.primary,
       foregroundColor: AppColors.white,
       overlayColor: primaryOverlay,
+      textStyle: _textStyle,
     ),
   );
 
@@ -45,6 +46,7 @@ class AppButtonsStyles {
       backgroundColor: AppColors.gray.shade100,
       foregroundColor: secondaryForeground,
       overlayColor: secondaryOverlay,
+      textStyle: _textStyle,
     ),
   );
 

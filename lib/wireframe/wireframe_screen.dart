@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/sizes.dart';
-import '../sections/about_section.dart';
-import '../sections/contact_section.dart';
-import '../sections/footer.dart';
-import '../sections/introduction_section.dart';
-import '../sections/nav_bar.dart';
-import '../sections/projects_section.dart';
-import '../sections/reviews_section.dart';
-import '../sections/services_section.dart';
+import '../theme/sizes.dart';
+import '../ui/sections/about_section.dart';
+import '../ui/sections/contact_section.dart';
+import '../ui/sections/footer.dart';
+import '../ui/sections/introduction_section.dart';
+import '../ui/sections/nav_bar.dart';
+import '../ui/sections/projects_section.dart';
+import '../ui/sections/reviews_section.dart';
+import '../ui/sections/services_section.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class WireframeScreen extends StatelessWidget {
+  const WireframeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

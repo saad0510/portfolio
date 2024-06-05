@@ -12,4 +12,12 @@ extension ResponsiveBreakpointsExt on ResponsiveBreakpointsData {
     if (isDesktop) return desktop;
     return wideScreen;
   }
+
+  bool get withinTablet {
+    return smallerOrEqualTo(TABLET);
+  }
+
+  bool get withinSemiDesktop {
+    return smallerOrEqualTo('SEMI_DESKTOP');
+  }
 }

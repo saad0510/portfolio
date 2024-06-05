@@ -3,8 +3,8 @@ import '../core/extensions/text_ext.dart';
 enum NavItems {
   home,
   about,
-  service,
-  blogs,
+  services,
+  projects,
   contact,
   ;
 

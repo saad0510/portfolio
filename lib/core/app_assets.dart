@@ -4,5 +4,5 @@ class AppAssets {
   static const images = 'assets/images';
 
   static const me = '$images/saad.png';
-  static const me_with_logos = '$images/saad_with_logos.png';
+  static const mobile_development = '$images/mobile_development.png';
 }

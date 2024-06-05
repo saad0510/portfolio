@@ -23,7 +23,7 @@ class AppFonts {
 
   static const heading3 = TextStyle(
     fontSize: 48,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w600,
     height: 60 / 48,
     fontFamily: fontFamily,
   );
@@ -72,7 +72,7 @@ class AppFonts {
 
   static const text2 = TextStyle(
     fontSize: 18,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     height: 28 / 18,
     fontFamily: fontFamily,
   );
@@ -96,7 +96,7 @@ class AppFonts {
     displayMedium: TextStyle(),
     displaySmall: heading3,
     headlineLarge: TextStyle(),
-    headlineMedium: TextStyle(),
+    headlineMedium: heading6,
     headlineSmall: TextStyle(),
     titleLarge: TextStyle(),
     titleMedium: TextStyle(),

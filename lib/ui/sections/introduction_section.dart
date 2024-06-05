@@ -3,6 +3,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../core/app_assets.dart';
 import '../../core/constants.dart';
+import '../../core/extensions/responsive_ext.dart';
 import '../../core/extensions/theme_ext.dart';
 import '../../core/utils/semi_circle_clipper.dart';
 import '../../theme/sizes.dart';
@@ -13,16 +14,16 @@ class IntroductionSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (ResponsiveBreakpoints.of(context).smallerOrEqualTo('SEMI_DESKTOP')) {
+    if (ResponsiveBreakpoints.of(context).withinSemiDesktop) {
       return BaseSection(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const IntroductionText(isBreakPoint: true),
+            const IntroductionText(isSmallScreen: true),
             Sizes.s64.spaceY,
             const ClipPath(
               clipper: SemiCircleClipper(curveFactor: 2),
-              child: IntroductionImage(isBreakPoint: true),
+              child: IntroductionImage(isSmallScreen: true),
             ),
           ],
         ),
@@ -35,7 +36,7 @@ class IntroductionSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const Expanded(
-            child: IntroductionText(isBreakPoint: false),
+            child: IntroductionText(),
           ),
           Sizes.s100.spaceX,
           const SizedBox(
@@ -54,14 +55,14 @@ class IntroductionSection extends StatelessWidget {
 class IntroductionText extends StatelessWidget {
   const IntroductionText({
     super.key,
-    this.isBreakPoint = false,
+    this.isSmallScreen = false,
   });
 
-  final bool isBreakPoint;
+  final bool isSmallScreen;
 
   @override
   Widget build(BuildContext context) {
-    final textAlign = isBreakPoint ? TextAlign.center : TextAlign.left;
+    final textAlign = isSmallScreen ? TextAlign.center : TextAlign.left;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -73,7 +74,6 @@ class IntroductionText extends StatelessWidget {
           style: context.typography.labelSmall?.copyWith(
             color: context.colors.primary,
             letterSpacing: 2,
-            fontWeight: FontWeight.w500,
           ),
         ),
         Sizes.s16.spaceY,
@@ -84,7 +84,7 @@ class IntroductionText extends StatelessWidget {
                 text: 'Full Stack\n',
               ),
               TextSpan(
-                text: 'Flutter App',
+                text: 'Flutter',
                 style: TextStyle(color: context.colors.primary),
               ),
               const TextSpan(
@@ -92,13 +92,13 @@ class IntroductionText extends StatelessWidget {
               ),
             ],
           ),
-          style: context.typography.displaySmall,
+          style: context.typography.displaySmall.weighted(FontWeight.bold),
           textAlign: textAlign,
         ),
         Sizes.s24.spaceY,
         Sizes.s32.spaceY,
         Align(
-          alignment: isBreakPoint ? Alignment.center : Alignment.centerLeft,
+          alignment: isSmallScreen ? Alignment.center : Alignment.centerLeft,
           child: ElevatedButton(
             onPressed: () {},
             child: const Text('Let\'s Work Together'),
@@ -112,18 +112,18 @@ class IntroductionText extends StatelessWidget {
 class IntroductionImage extends StatelessWidget {
   const IntroductionImage({
     super.key,
-    this.isBreakPoint = false,
+    this.isSmallScreen = false,
   });
 
-  final bool isBreakPoint;
+  final bool isSmallScreen;
 
   @override
   Widget build(BuildContext context) {
     return Image.asset(
       AppAssets.me,
       width: double.infinity,
-      height: isBreakPoint ? null : double.infinity,
-      fit: isBreakPoint ? BoxFit.fitWidth : BoxFit.fitHeight,
+      height: isSmallScreen ? null : double.infinity,
+      fit: isSmallScreen ? BoxFit.fitWidth : BoxFit.fitHeight,
       alignment: Alignment.topCenter,
       cacheHeight: 1080,
     );

@@ -11,6 +11,7 @@ class AppTheme {
     iconTheme: iconTheme,
     textTheme: AppFonts.textTheme,
     tabBarTheme: tabBarTheme,
+    cardTheme: cardTheme,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: AppButtonsStyles.elevatedButton,
     ),
@@ -34,5 +35,14 @@ class AppTheme {
     labelColor: AppColors.primary,
     unselectedLabelStyle: AppFonts.text2,
     unselectedLabelColor: AppColors.gray.shade600,
+  );
+
+  static final cardTheme = CardTheme(
+    elevation: 0,
+    color: AppColors.gray.shade100,
+    margin: EdgeInsets.zero,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+    ),
   );
 }

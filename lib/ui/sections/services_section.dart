@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
-import '../../core/extensions/responsive_ext.dart';
+import '../../core/constants.dart';
+import '../../core/extensions/theme_ext.dart';
 import '../../theme/sizes.dart';
-import '../../wireframe/wireframe_card.dart';
-import '../../wireframe/wireframe_text.dart';
+import '../widgets/service_card.dart';
 import 'base_section.dart';
 
 class ServicesSection extends StatelessWidget {
@@ -12,31 +11,46 @@ class ServicesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final crossAxisCount = ResponsiveBreakpoints.of(context).map(
-      mobile: 1,
-      tablet: 2,
-      desktop: 3,
-      wideScreen: 4,
-    );
-
-    return BaseSection.alternate(
+    return BaseSection(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const WireframeText(),
+          Text(
+            'My Services',
+            textAlign: TextAlign.center,
+            style: context.typography.displaySmall,
+          ),
+          Sizes.s16.spaceY,
+          const Text(
+            Constants.shortBio,
+            textAlign: TextAlign.center,
+          ),
+          Sizes.s16.spaceY,
           Sizes.s24.spaceY,
-          GridView.builder(
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: crossAxisCount,
-              childAspectRatio: 1,
-              crossAxisSpacing: Sizes.s24.value,
-              mainAxisSpacing: Sizes.s24.value,
-            ),
-            itemCount: 6,
-            itemBuilder: (_, i) => const WireframeCard(),
+          Wrap(
+            spacing: Sizes.s24.value,
+            runSpacing: Sizes.s24.value,
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            runAlignment: WrapAlignment.center,
+            children: const [
+              ServiceCard(
+                title: 'Multi-Platform Apps',
+                subtitle: 'I create apps for android, iOS, websites & desktops',
+                icon: Icons.devices_rounded,
+                selected: true,
+              ),
+              ServiceCard(
+                title: 'Bugs Fixing',
+                subtitle: 'I fix bugs and unexpected problems in existing applications.',
+                icon: Icons.pest_control_rounded,
+              ),
+              ServiceCard(
+                title: 'Reskining',
+                subtitle: 'I can reskin templates with your own logo and themes.',
+                icon: Icons.app_shortcut_outlined,
+              ),
+            ],
           ),
         ],
       ),

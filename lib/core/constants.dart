@@ -8,5 +8,5 @@ class Constants {
   static const shortBio =
       "I am a flutter developer creating responsive\nand visually appealing cross-platform applications.";
 
-  static const reviewsIntro = " highly recommend them for any business looking to improve their online presence.";
+  static const reviewsIntro = "We highly recommend them for any business looking to improve their online presence.";
 }

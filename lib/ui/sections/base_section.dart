@@ -10,12 +10,6 @@ class BaseSection extends StatelessWidget {
     required this.child,
   });
 
-  BaseSection.alternate({
-    super.key,
-    this.height,
-    required this.child,
-  }) : color = Colors.grey.shade100;
-
   final double? height;
   final Color color;
   final Widget child;

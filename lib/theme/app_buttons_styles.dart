@@ -92,16 +92,3 @@ class AppButtonsStyles {
 }
 
 typedef _Fixed<T> = WidgetStatePropertyAll<T>;
-
-// ignore: non_constant_identifier_names
-WidgetStateProperty<T> _Stateful<T>({
-  T? hovered,
-  required T fallback,
-}) {
-  return WidgetStateProperty.resolveWith(
-    (states) {
-      if (hovered != null && states.contains(WidgetState.hovered)) return hovered;
-      return fallback;
-    },
-  );
-}

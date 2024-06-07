@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
 
-// TODO: complete text theme with colors, weights
-
 class AppFonts {
   static const fontFamily = 'Ubuntu';
 

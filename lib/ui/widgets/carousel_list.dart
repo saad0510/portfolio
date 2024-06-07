@@ -27,7 +27,7 @@ class CarouselStateList extends State<CarouselList> {
           children: [
             Positioned.fill(
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: 5,
                 controller: scrollController,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (_, i) => Padding(

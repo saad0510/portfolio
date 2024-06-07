@@ -3,7 +3,6 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../core/assets/app_images.dart';
 import '../../core/constants.dart';
-import '../../core/extensions/responsive_ext.dart';
 import '../../core/extensions/theme_ext.dart';
 import '../../core/utils/semi_circle_clipper.dart';
 import '../../theme/sizes.dart';
@@ -14,7 +13,7 @@ class IntroductionSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (ResponsiveBreakpoints.of(context).withinSemiDesktop) {
+    if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET))
       return BaseSection(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -28,7 +27,6 @@ class IntroductionSection extends StatelessWidget {
           ],
         ),
       );
-    }
 
     return BaseSection(
       height: 700,

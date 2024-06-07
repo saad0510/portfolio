@@ -19,6 +19,7 @@ class ExperienceTab extends StatelessWidget {
                 child: StatsCard(
                   title: 'Years of Experience',
                   value: '03',
+                  icon: Icons.add,
                 ),
               ),
               Sizes.s32.spaceX,
@@ -26,6 +27,7 @@ class ExperienceTab extends StatelessWidget {
                 child: StatsCard(
                   title: 'Projects Done',
                   value: '30',
+                  icon: Icons.add,
                 ),
               ),
             ],
@@ -36,7 +38,8 @@ class ExperienceTab extends StatelessWidget {
               const Expanded(
                 child: StatsCard(
                   title: 'Happy Customers',
-                  value: '23',
+                  value: '95',
+                  icon: Icons.percent,
                 ),
               ),
               Sizes.s32.spaceX,
@@ -44,6 +47,7 @@ class ExperienceTab extends StatelessWidget {
                 child: StatsCard(
                   title: 'Award Wins',
                   value: '03',
+                  icon: Icons.add,
                 ),
               ),
             ],

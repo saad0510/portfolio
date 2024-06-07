@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../core/extensions/theme_ext.dart';
 
 class AppColors {
-  // TODO: test every color
-
   static final colorScheme = ColorScheme(
     brightness: Brightness.light,
     // primary
@@ -12,7 +10,6 @@ class AppColors {
     onPrimary: white,
     primaryContainer: purple.shade25,
     onPrimaryContainer: gray.shade600,
-    // TODO: identify secondary color
     secondary: Colors.transparent,
     onSecondary: Colors.transparent,
     secondaryContainer: gray.shade100,

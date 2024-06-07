@@ -3,7 +3,6 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../core/assets/app_images.dart';
 import '../../core/constants.dart';
-import '../../core/extensions/responsive_ext.dart';
 import '../../core/extensions/theme_ext.dart';
 import '../../theme/sizes.dart';
 import '../widgets/education_tab.dart';
@@ -16,14 +15,13 @@ class AboutSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (ResponsiveBreakpoints.of(context).withinSemiDesktop) {
+    if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET))
       return const BaseSection(
         height: 850,
         child: AboutText(
           isSmallScreen: true,
         ),
       );
-    }
 
     return BaseSection(
       height: 800,

@@ -12,7 +12,7 @@ class ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (ResponsiveBreakpoints.of(context).smallerOrEqualTo('SEMI_DESKTOP')) {
+    if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET))
       return BaseSection(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -29,7 +29,6 @@ class ContactSection extends StatelessWidget {
           ],
         ),
       );
-    }
 
     return BaseSection(
       child: Column(

@@ -9,8 +9,6 @@ extension ShadesExt on ColorSwatch {
 }
 
 extension ContextAccessExt on BuildContext {
-  Color get backgroundColor => Theme.of(this).scaffoldBackgroundColor;
-
   ColorScheme get colors => Theme.of(this).colorScheme;
 
   TextTheme get typography => Theme.of(this).textTheme;

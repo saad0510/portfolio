@@ -16,24 +16,36 @@ class EducationTab extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w600),
           ),
           Sizes.s10.spaceY,
-          const Text('FAST NUCES Karachi'),
-          const Text('CGPA: 3.8'),
+          const Text(
+            'FAST NUCES Karachi',
+          ),
+          const Text(
+            'CGPA: 3.8',
+          ),
           Sizes.s24.spaceY,
           const Text(
             'Higher Secondary Certificate (HSC)',
             style: TextStyle(fontWeight: FontWeight.w600),
           ),
           Sizes.s10.spaceY,
-          const Text('Adamjee Government Science College'),
-          const Text('Aggregate: 89%'),
+          const Text(
+            'Adamjee Government Science College',
+          ),
+          const Text(
+            'Aggregate: 89%',
+          ),
           Sizes.s24.spaceY,
           const Text(
             'Secondary School Certificate (SSC)',
             style: TextStyle(fontWeight: FontWeight.w600),
           ),
           Sizes.s10.spaceY,
-          const Text('Bright Future School'),
-          const Text('Aggregate: 87%'),
+          const Text(
+            'Bright Future School',
+          ),
+          const Text(
+            'Aggregate: 87%',
+          ),
         ],
       ),
     );

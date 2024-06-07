@@ -8,10 +8,12 @@ class StatsCard extends StatelessWidget {
     super.key,
     required this.title,
     required this.value,
+    required this.icon,
   });
 
   final String title;
   final String value;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class StatsCard extends StatelessWidget {
               style: context.typography.headlineMedium.removeFont,
             ),
             Icon(
-              Icons.add,
+              icon,
               size: Sizes.s16.value,
             ),
           ],

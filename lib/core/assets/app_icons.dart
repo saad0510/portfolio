@@ -12,3 +12,5 @@ enum AppIcons {
 
   String get fullPath => 'assets/icons/$name.svg';
 }
+
+// ignore_for_file: constant_identifier_names

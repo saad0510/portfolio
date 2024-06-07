@@ -106,7 +106,7 @@ class AppFonts {
     labelSmall: text2,
     bodyLarge: TextStyle(),
     bodyMedium: paragraph1,
-    bodySmall: TextStyle(),
+    bodySmall: tiny,
   ).apply(
     fontFamily: fontFamily,
     bodyColor: AppColors.gray.shade600,

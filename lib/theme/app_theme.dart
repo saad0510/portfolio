@@ -12,11 +12,11 @@ class AppTheme {
     textTheme: AppFonts.textTheme,
     tabBarTheme: tabBarTheme,
     cardTheme: cardTheme,
+    iconButtonTheme: IconButtonThemeData(
+      style: AppButtonsStyles.iconButton,
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: AppButtonsStyles.elevatedButton,
-    ),
-    outlinedButtonTheme: OutlinedButtonThemeData(
-      style: AppButtonsStyles.outlinedButton,
     ),
     textButtonTheme: TextButtonThemeData(
       style: AppButtonsStyles.textButton,

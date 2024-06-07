@@ -8,6 +8,7 @@ import 'sizes.dart';
 class AppButtonsStyles {
   static final primaryOverlay = AppColors.purple.shade200;
   static final secondaryForeground = AppColors.gray.shade600;
+  static final secondaryBackground = AppColors.gray.shade100;
   static final secondaryOverlay = AppColors.gray.shade400;
 
   static final _textStyle = AppFonts.paragraph1.copyWith(
@@ -43,30 +44,10 @@ class AppButtonsStyles {
 
   static final secondaryElevatedButton = _baseStyles(
     ElevatedButton.styleFrom(
-      backgroundColor: AppColors.gray.shade100,
+      backgroundColor: secondaryBackground,
       foregroundColor: secondaryForeground,
       overlayColor: secondaryOverlay,
       textStyle: _textStyle,
-    ),
-  );
-
-  // OutlinedButton:
-
-  static final outlinedButton = _baseStyles(
-    OutlinedButton.styleFrom(
-      backgroundColor: Colors.transparent,
-      foregroundColor: AppColors.primary,
-      overlayColor: primaryOverlay,
-      side: BorderSide(color: AppColors.primary),
-    ),
-  );
-
-  static final secondaryOutlinedButton = _baseStyles(
-    OutlinedButton.styleFrom(
-      backgroundColor: Colors.transparent,
-      foregroundColor: secondaryForeground,
-      overlayColor: secondaryOverlay,
-      side: BorderSide(color: AppColors.gray.shade300),
     ),
   );
 
@@ -86,6 +67,26 @@ class AppButtonsStyles {
       backgroundColor: Colors.transparent,
       foregroundColor: secondaryForeground,
       overlayColor: secondaryOverlay,
+    ),
+  );
+
+  // IconButton:
+
+  static final iconButton = ButtonStyle(
+    elevation: const _Fixed(0),
+    padding: const _Fixed(EdgeInsets.zero),
+    visualDensity: VisualDensity.comfortable,
+    alignment: Alignment.center,
+    iconSize: const _Fixed(24),
+    fixedSize: const _Fixed(Size(35, 35)),
+    backgroundColor: _Fixed(secondaryBackground),
+    foregroundColor: _Fixed(secondaryForeground),
+    shadowColor: const _Fixed(Colors.transparent),
+    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    shape: const _Fixed(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
     ),
   );
 }

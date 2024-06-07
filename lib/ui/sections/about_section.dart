@@ -83,8 +83,8 @@ class _AboutTextState extends State<AboutText> with TickerProviderStateMixin {
         ),
         Sizes.s24.spaceY,
         TabBar(
-          isScrollable: true,
           controller: tabController,
+          isScrollable: true,
           tabAlignment: widget.isSmallScreen ? TabAlignment.center : TabAlignment.start,
           tabs: const [
             Text('Skills'),

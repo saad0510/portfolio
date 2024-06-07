@@ -12,7 +12,7 @@ class ReviewCard extends StatelessWidget {
     return Card(
       child: Container(
         width: 400,
-        height: double.infinity,
+        height: 450,
         constraints: BoxConstraints(
           maxWidth: MediaQuery.sizeOf(context).width - Sizes.s64.value,
         ),

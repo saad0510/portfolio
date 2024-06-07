@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/assets/app_icon.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/sizes.dart';
 
@@ -11,7 +12,7 @@ class ContactCard extends StatelessWidget {
   });
 
   final String value;
-  final IconData icon;
+  final AppIcons icon;
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +20,12 @@ class ContactCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(
+        AppIcon(
           icon,
           color: AppColors.gray.shade500,
-          size: 50,
+          size: 40,
         ),
-        Sizes.s16.spaceY,
+        Sizes.s24.spaceY,
         Text(
           value,
           textAlign: TextAlign.center,

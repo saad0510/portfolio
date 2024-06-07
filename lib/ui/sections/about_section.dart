@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import '../../core/app_assets.dart';
+import '../../core/assets/app_images.dart';
 import '../../core/constants.dart';
 import '../../core/extensions/responsive_ext.dart';
 import '../../core/extensions/theme_ext.dart';
@@ -33,7 +33,7 @@ class AboutSection extends StatelessWidget {
           ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(16)),
             child: Image.asset(
-              AppAssets.mobile_development,
+              AppImages.mobile_development.fullPath,
               height: double.infinity,
               width: 350,
               alignment: Alignment.topLeft,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import '../../core/app_assets.dart';
+import '../../core/assets/app_images.dart';
 import '../../core/constants.dart';
 import '../../core/extensions/responsive_ext.dart';
 import '../../core/extensions/theme_ext.dart';
@@ -120,7 +120,7 @@ class IntroductionImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      AppAssets.me,
+      AppImages.me.fullPath,
       width: double.infinity,
       height: isSmallScreen ? null : double.infinity,
       fit: isSmallScreen ? BoxFit.fitWidth : BoxFit.fitHeight,

@@ -27,13 +27,19 @@ class ReviewsSection extends StatelessWidget {
           ),
           Sizes.s16.spaceY,
           Sizes.s24.spaceY,
-          SizedBox(
-            height: 450,
-            child: ListView.separated(
-              itemCount: 3,
+          Center(
+            child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              separatorBuilder: (_, i) => Sizes.s24.spaceX,
-              itemBuilder: (_, i) => const ReviewCard(),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const ReviewCard(),
+                  Sizes.s24.spaceX,
+                  const ReviewCard(),
+                  Sizes.s24.spaceX,
+                  const ReviewCard(),
+                ],
+              ),
             ),
           ),
         ],

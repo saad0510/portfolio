@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import '../../core/extensions/responsive_ext.dart';
+import '../../core/extensions/theme_ext.dart';
 import '../../theme/sizes.dart';
-import '../../wireframe/wireframe_button.dart';
-import '../../wireframe/wireframe_card.dart';
-import '../../wireframe/wireframe_text.dart';
-import '../../wireframe/wireframe_text_field.dart';
+import '../widgets/contact_card.dart';
+import '../widgets/contact_form.dart';
 import 'base_section.dart';
 
 class ContactSection extends StatelessWidget {
@@ -14,16 +12,34 @@ class ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET)) {
+    const emailCard = ContactCard(
+      icon: Icons.email_rounded,
+      value: 'saadbinkhalid.dev\n@gmail.com',
+    );
+    const phoneCard = ContactCard(
+      icon: Icons.phone_rounded,
+      value: '+92 313 3094567',
+    );
+
+    if (ResponsiveBreakpoints.of(context).smallerOrEqualTo('SEMI_DESKTOP')) {
       return BaseSection(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const WireframeText(height: 100),
+            Text(
+              'Let\'s Create Awesome\nProduct Together',
+              textAlign: TextAlign.center,
+              style: context.typography.displaySmall,
+            ),
+            Sizes.s32.spaceY,
+            const ContactForm(),
             Sizes.s64.spaceY,
-            const _WfContactForm(),
-            Sizes.s64.spaceY,
-            const _WfContactInfoCards(),
+            Wrap(
+              alignment: WrapAlignment.spaceEvenly,
+              spacing: Sizes.s24.value,
+              runSpacing: Sizes.s64.value,
+              children: const [emailCard, phoneCard],
+            ),
           ],
         ),
       );
@@ -33,99 +49,29 @@ class ContactSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const WireframeText(height: 100),
-          Sizes.s64.spaceY,
+          Text(
+            'Let\'s Create Awesome\nProduct Together',
+            style: context.typography.displaySmall,
+          ),
+          Sizes.s32.spaceY,
           Row(
             children: [
               const Expanded(
-                child: _WfContactForm(),
+                child: ContactForm(),
               ),
-              Sizes.s100.spaceX,
-              const Expanded(
-                child: _WfContactInfoCards(),
+              Sizes.s64.spaceX,
+              Column(
+                children: [
+                  emailCard,
+                  Sizes.s100.spaceY,
+                  phoneCard,
+                  Sizes.s64.spaceY,
+                ],
               ),
             ],
           ),
         ],
       ),
-    );
-  }
-}
-
-class _WfContactForm extends StatelessWidget {
-  const _WfContactForm();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const WireframeTextField(),
-        Sizes.s16.spaceY,
-        const WireframeTextField(),
-        Sizes.s16.spaceY,
-        const WireframeTextField(),
-        Sizes.s16.spaceY,
-        const WireframeTextField(),
-        Sizes.s16.spaceY,
-        const WireframeTextField(),
-        Sizes.s16.spaceY,
-        const WireframeTextField(),
-        Sizes.s16.spaceY,
-        const Row(
-          children: [
-            Spacer(),
-            WireframeButton(),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class _WfContactInfoCards extends StatelessWidget {
-  const _WfContactInfoCards();
-
-  @override
-  Widget build(BuildContext context) {
-    final crossAxisCount = ResponsiveBreakpoints.of(context).map(
-      mobile: 1,
-      tablet: 2,
-      desktop: 2,
-      wideScreen: 2,
-    );
-
-    return GridView.builder(
-      padding: EdgeInsets.zero,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: crossAxisCount,
-        crossAxisSpacing: Sizes.s24.value,
-        mainAxisSpacing: Sizes.s24.value,
-        mainAxisExtent: 170,
-      ),
-      itemCount: 4,
-      itemBuilder: (_, i) => const _WfContactCard(),
-    );
-  }
-}
-
-class _WfContactCard extends StatelessWidget {
-  const _WfContactCard();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const Expanded(
-          child: WireframeCard(),
-        ),
-        Sizes.s10.spaceY,
-        const WireframeText(),
-      ],
     );
   }
 }

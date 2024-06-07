@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../core/extensions/theme_ext.dart';
 import 'app_buttons_styles.dart';
 import 'app_colors.dart';
 import 'app_fonts.dart';
@@ -12,6 +13,7 @@ class AppTheme {
     textTheme: AppFonts.textTheme,
     tabBarTheme: tabBarTheme,
     cardTheme: cardTheme,
+    inputDecorationTheme: inputFieldTheme,
     iconButtonTheme: IconButtonThemeData(
       style: AppButtonsStyles.iconButton,
     ),
@@ -45,4 +47,25 @@ class AppTheme {
       borderRadius: BorderRadius.all(Radius.circular(8)),
     ),
   );
+
+  static final inputFieldTheme = InputDecorationTheme(
+    filled: false,
+    alignLabelWithHint: true,
+    contentPadding: Sizes.s16.pad,
+    hintStyle: AppFonts.paragraph1.colored(AppColors.gray.shade400),
+    labelStyle: AppFonts.paragraph1.colored(AppColors.gray.shade600),
+    border: inputFieldBorder(),
+    enabledBorder: inputFieldBorder(),
+    disabledBorder: inputFieldBorder(),
+    focusedBorder: inputFieldBorder(color: AppColors.primary),
+    errorBorder: inputFieldBorder(color: AppColors.red.shade600),
+    focusedErrorBorder: inputFieldBorder(color: AppColors.red.shade600),
+  );
+
+  static InputBorder inputFieldBorder({Color? color}) {
+    return OutlineInputBorder(
+      borderSide: BorderSide(color: color ?? AppColors.gray.shade200),
+      borderRadius: const BorderRadius.all(Radius.circular(8)),
+    );
+  }
 }

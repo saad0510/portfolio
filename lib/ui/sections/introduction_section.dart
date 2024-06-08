@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import '../../controllers/data_provider.dart';
 import '../../core/assets/app_images.dart';
-import '../../core/constants.dart';
 import '../../core/extensions/theme_ext.dart';
 import '../../core/utils/semi_circle_clipper.dart';
 import '../../theme/sizes.dart';
@@ -60,6 +61,8 @@ class IntroductionText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.watch<DataProvider>().user;
+
     final textAlign = isSmallScreen ? TextAlign.center : TextAlign.left;
 
     return Column(
@@ -67,7 +70,7 @@ class IntroductionText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          Constants.personalName.toUpperCase(),
+          user.name.toUpperCase(),
           textAlign: textAlign,
           style: context.typography.labelSmall?.copyWith(
             color: context.colors.primary,
@@ -118,7 +121,7 @@ class IntroductionImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      AppImages.me.fullPath,
+      AppImages.me.path,
       width: double.infinity,
       height: isSmallScreen ? null : double.infinity,
       fit: isSmallScreen ? BoxFit.fitWidth : BoxFit.fitHeight,

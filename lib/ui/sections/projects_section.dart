@@ -5,6 +5,8 @@ import '../../theme/sizes.dart';
 import '../widgets/carousel_list.dart';
 import 'base_section.dart';
 
+// TODO: add projects
+
 class ProjectsSection extends StatefulWidget {
   const ProjectsSection({super.key});
 

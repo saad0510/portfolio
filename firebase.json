@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "build/web",
+    "site": "saadbinkhalid",
     "ignore": [
       "firebase.json",
       "**/.*",

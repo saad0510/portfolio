@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../../core/extensions/theme_ext.dart';
+import '../../entities/review_data.dart';
 import '../../theme/sizes.dart';
 import 'rating_bar.dart';
 
 class ReviewCard extends StatelessWidget {
-  const ReviewCard({super.key});
+  const ReviewCard({
+    super.key,
+    required this.review,
+  });
+
+  final ReviewData review;
 
   @override
   Widget build(BuildContext context) {
@@ -26,29 +32,29 @@ class ReviewCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const CircleAvatar(
+                    CircleAvatar(
                       radius: 25,
-                      backgroundImage: NetworkImage('https://picsum.photos/id/1005/200/300'),
+                      backgroundImage: NetworkImage(review.imageUrl),
                     ),
                     Sizes.s16.spaceY,
                     Text(
-                      'Usman Majeed',
+                      review.username,
                       style: context.typography.labelSmall,
                     ),
-                    const Text.rich(
+                    Text.rich(
                       TextSpan(
-                        text: 'Founder at ',
+                        text: '${review.position} at ',
                         children: [
                           TextSpan(
-                            text: 'Izdiwaj',
-                            style: TextStyle(fontWeight: FontWeight.w500),
+                            text: review.company,
+                            style: const TextStyle(fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
                     ),
                     Sizes.s10.spaceY,
-                    const RatingBar(
-                      filled: 3,
+                    RatingBar(
+                      filled: review.rating,
                       maxCount: 5,
                     ),
                   ],
@@ -58,8 +64,8 @@ class ReviewCard extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: Sizes.s24.pad,
-                child: const Text(
-                  '"Saad exceeded my expectations by developing a fantastic matchmaking app, Izdiwaj, in Flutter. His expertise, dedication, and timely delivery were exceptional. Communication was seamless, and he addressed all requirements perfectly. Highly recommend Saad for any app development project. A true professional!"',
+                child: Text(
+                  '"${review.text}"',
                   textAlign: TextAlign.center,
                 ),
               ),

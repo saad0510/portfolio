@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import '../../controllers/data_provider.dart';
 import '../../core/assets/app_images.dart';
-import '../../core/constants.dart';
 import '../../core/extensions/theme_ext.dart';
 import '../../theme/sizes.dart';
 import '../widgets/education_tab.dart';
@@ -31,7 +32,7 @@ class AboutSection extends StatelessWidget {
           ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(16)),
             child: Image.asset(
-              AppImages.mobile_development.fullPath,
+              AppImages.mobile_development.path,
               height: double.infinity,
               width: 350,
               alignment: Alignment.topLeft,
@@ -66,6 +67,8 @@ class _AboutTextState extends State<AboutText> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.watch<DataProvider>().user;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -76,7 +79,7 @@ class _AboutTextState extends State<AboutText> with TickerProviderStateMixin {
         ),
         Sizes.s16.spaceY,
         Text(
-          Constants.bio,
+          user.bio,
           textAlign: widget.isSmallScreen ? TextAlign.center : TextAlign.left,
         ),
         Sizes.s24.spaceY,

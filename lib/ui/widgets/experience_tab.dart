@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../controllers/data_provider.dart';
 import '../../theme/sizes.dart';
 import 'stats_card.dart';
 
@@ -8,6 +10,8 @@ class ExperienceTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final stats = context.watch<DataProvider>().user.statistics;
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -15,18 +19,18 @@ class ExperienceTab extends StatelessWidget {
           Sizes.s24.spaceY,
           Row(
             children: [
-              const Expanded(
+              Expanded(
                 child: StatsCard(
                   title: 'Years of Experience',
-                  value: '03',
+                  value: stats.experienceInYears.padded,
                   icon: Icons.add,
                 ),
               ),
               Sizes.s32.spaceX,
-              const Expanded(
+              Expanded(
                 child: StatsCard(
                   title: 'Projects Done',
-                  value: '30',
+                  value: stats.projectsDone.padded,
                   icon: Icons.add,
                 ),
               ),
@@ -35,18 +39,18 @@ class ExperienceTab extends StatelessWidget {
           Sizes.s64.spaceY,
           Row(
             children: [
-              const Expanded(
+              Expanded(
                 child: StatsCard(
                   title: 'Happy Customers',
-                  value: '95',
+                  value: stats.customerSatisfaction.padded,
                   icon: Icons.percent,
                 ),
               ),
               Sizes.s32.spaceX,
-              const Expanded(
+              Expanded(
                 child: StatsCard(
                   title: 'Award Wins',
-                  value: '03',
+                  value: stats.awardsWon.padded,
                   icon: Icons.add,
                 ),
               ),
@@ -55,5 +59,11 @@ class ExperienceTab extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+extension on int {
+  String get padded {
+    return toString().padLeft(2, '0');
   }
 }

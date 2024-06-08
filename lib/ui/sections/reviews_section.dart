@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../core/constants.dart';
+import '../../controllers/data_provider.dart';
 import '../../core/extensions/theme_ext.dart';
 import '../../theme/sizes.dart';
 import '../widgets/review_card.dart';
@@ -11,6 +12,17 @@ class ReviewsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final reviews = context.watch<DataProvider>().reviews;
+
+    final reviewCards = [
+      for (final review in reviews) ...[
+        ReviewCard(review: review),
+        Sizes.s24.spaceX,
+      ]
+    ];
+
+    if (reviewCards.isNotEmpty) reviewCards.removeLast();
+
     return BaseSection(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -22,7 +34,7 @@ class ReviewsSection extends StatelessWidget {
           ),
           Sizes.s16.spaceY,
           const Text(
-            Constants.reviewsIntro,
+            'We highly recommend them for any business looking to improve their online presence.',
             textAlign: TextAlign.center,
           ),
           Sizes.s16.spaceY,
@@ -32,14 +44,7 @@ class ReviewsSection extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const ReviewCard(),
-                  Sizes.s24.spaceX,
-                  const ReviewCard(),
-                  Sizes.s24.spaceX,
-                  const ReviewCard(),
-                  Sizes.s24.spaceX,
-                ]..removeLast(),
+                children: reviewCards,
               ),
             ),
           ),

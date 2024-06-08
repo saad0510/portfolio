@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
+import "package:provider/provider.dart";
 
-import '../../core/constants.dart';
-import '../../core/extensions/theme_ext.dart';
-import '../../theme/sizes.dart';
-import '../widgets/service_card.dart';
+import "../../controllers/data_provider.dart";
+import "../../core/extensions/theme_ext.dart";
+import "../../theme/sizes.dart";
+import "../widgets/service_card.dart";
 import 'base_section.dart';
 
 class ServicesSection extends StatelessWidget {
@@ -11,6 +12,10 @@ class ServicesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = context.watch<DataProvider>();
+    final user = data.user;
+    final services = data.services;
+
     return BaseSection(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -21,8 +26,8 @@ class ServicesSection extends StatelessWidget {
             style: context.typography.displaySmall,
           ),
           Sizes.s16.spaceY,
-          const Text(
-            Constants.shortBio,
+          Text(
+            user.bio,
             textAlign: TextAlign.center,
           ),
           Sizes.s16.spaceY,
@@ -33,24 +38,19 @@ class ServicesSection extends StatelessWidget {
             alignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,
             runAlignment: WrapAlignment.center,
-            children: const [
-              ServiceCard(
-                title: 'Multi-Platform Apps',
-                subtitle: 'I create apps for android, iOS, websites & desktops',
-                icon: Icons.devices_rounded,
-                selected: true,
-              ),
-              ServiceCard(
-                title: 'Bugs Fixing',
-                subtitle: 'I fix bugs and unexpected problems in existing applications.',
-                icon: Icons.pest_control_rounded,
-              ),
-              ServiceCard(
-                title: 'Reskining',
-                subtitle: 'I can reskin templates with your own logo and themes.',
-                icon: Icons.app_shortcut_outlined,
-              ),
-            ],
+            children: List.generate(
+              services.length,
+              (i) {
+                final service = services[i];
+
+                return ServiceCard(
+                  title: service.title,
+                  subtitle: service.subtitle,
+                  icon: service.icon,
+                  selected: i == 0,
+                );
+              },
+            ),
           ),
         ],
       ),

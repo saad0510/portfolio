@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../controllers/data_provider.dart';
 import '../../core/assets/app_icon.dart';
 import '../../theme/sizes.dart';
 import 'contact_card.dart';
@@ -9,24 +11,26 @@ class ContactCardsBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.watch<DataProvider>().user;
+
     return Wrap(
       alignment: WrapAlignment.spaceEvenly,
       runAlignment: WrapAlignment.center,
       crossAxisAlignment: WrapCrossAlignment.center,
       spacing: Sizes.s32.value,
       runSpacing: Sizes.s64.value,
-      children: const [
+      children: [
         ContactCard(
           icon: AppIcons.phone,
-          value: '+92 313 3094567',
+          value: user.phone,
         ),
         ContactCard(
           icon: AppIcons.send,
-          value: 'saadbinkhalid.dev\n@gmail.com',
+          value: user.email.split('@').join('\n@'),
         ),
         ContactCard(
           icon: AppIcons.home,
-          value: 'Karachi, Pakistan',
+          value: user.residency,
         ),
       ],
     );

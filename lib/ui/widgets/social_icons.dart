@@ -5,6 +5,8 @@ import '../../core/extensions/theme_ext.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/sizes.dart';
 
+// TODO: add links in whole application
+
 class SocialIconsRow extends StatelessWidget {
   const SocialIconsRow({super.key});
 

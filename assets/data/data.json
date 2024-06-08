@@ -1,0 +1,81 @@
+{
+    "user": {
+        "name": "Saad Bin Khalid",
+        "bio": "I am a flutter developer creating responsive\nand visually appealing cross-platform applications.",
+        "about": "I am a flutter developer creating responsive and visually appealing cross-platform applications. My portfolio showcases my ability to develop applications from multiple domains on multiple platforms like android, iOS, web, and desktop. Let's work together to create an online presence that exceeds your expectations.",
+        "email": "saadbinkhalid.dev@gmail.com",
+        "phone": "+923133094567",
+        "residency": "Karachi, Pakistan",
+        "statistics": {
+            "experience_in_yrs": 3,
+            "projects_done": 30,
+            "customer_satisfaction_in_percent": 95,
+            "awards": 3
+        },
+        "links": {
+            "meeting": "",
+            "github": "https://github.com/saad0510",
+            "linkedin": "https://www.linkedin.com/in/saadbinkhaliddev/"
+        }
+    },
+    "skills": [
+        {
+            "title": "Frontend Development",
+            "description": "I develop beautiful and responsive frontend UI designs in flutter. I also recreate given designs from websites like Figma, Adobe XD."
+        },
+        {
+            "title": "Backend Integration",
+            "description": "I integrate backend APIs and databases into the frontend applications. I specialize in using firebase services for backend."
+        },
+        {
+            "title": "AI Technologies",
+            "description": "I extensively use Artificial Intelligence in my apps, ranging from OpenAI & Gemini APIs to smart recommendation systems."
+        }
+    ],
+    "education": [
+        {
+            "degree": "Bachelors in Computer Science",
+            "institute": "FAST NUCES Karachi",
+            "score": "CGPA: 3.8"
+        },
+        {
+            "degree": "Higher Secondary Certificate (HSC)",
+            "institute": "Adamjee Government Science College",
+            "score": "Aggregate: 89%"
+        },
+        {
+            "degree": "Secondary School Certificate (SSC)",
+            "institute": "Bright Future School",
+            "score": "Aggregate: 87%"
+        }
+    ],
+    "services": [
+        {
+            "title": "Multi-Platform Apps",
+            "subtitle": "I create apps for android, iOS, websites & desktops",
+            "icon": "devices"
+        },
+        {
+            "title": "Bugs Fixing",
+            "subtitle": "I fix bugs and unexpected problems in existing applications.",
+            "icon": "pest_control"
+        },
+        {
+            "title": "Reskining",
+            "subtitle": "I can reskin templates with your own logo and themes.",
+            "icon": "app_shortcut"
+        }
+    ],
+    "projects": [],
+    "reviews": [
+        {
+            "username": "Usman Majeed",
+            "image_url": "https://picsum.photos/id/1005/200/300",
+            "position": "Founder",
+            "company": "Izdiwaj",
+            "company_url": "https://izdiwaj.com",
+            "rating": 5,
+            "text": "Saad exceeded my expectations by developing a fantastic matchmaking app, Izdiwaj, in Flutter. His expertise, dedication, and timely delivery were exceptional. Communication was seamless, and he addressed all requirements perfectly. Highly recommend Saad for any app development project. A true professional!"
+        }
+    ]
+}

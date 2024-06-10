@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'controllers/data_provider.dart';
+import 'controllers/entites_provider.dart';
 import 'controllers/navigation_controller.dart';
 import 'theme/app_theme.dart';
 import 'ui/screens/home_screen.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => DataProvider()),
+          ChangeNotifierProvider(create: (_) => EntitesProvider()),
           ChangeNotifierProvider(create: (_) => NavigationController()),
         ],
         child: MaterialApp(

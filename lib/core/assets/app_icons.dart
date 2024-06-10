@@ -8,7 +8,7 @@ enum AppIcons {
   none,
   ;
 
-  String get path => '/assets/icons/$name.svg';
+  String get path => 'assets/icons/$name.svg';
 }
 
 // ignore_for_file: constant_identifier_names

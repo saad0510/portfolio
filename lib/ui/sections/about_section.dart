@@ -79,7 +79,7 @@ class _AboutTextState extends State<AboutText> with TickerProviderStateMixin {
         ),
         Sizes.s16.spaceY,
         Text(
-          user.bio,
+          user.about,
           textAlign: widget.isSmallScreen ? TextAlign.center : TextAlign.left,
         ),
         Sizes.s24.spaceY,

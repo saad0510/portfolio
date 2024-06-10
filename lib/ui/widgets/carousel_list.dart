@@ -32,7 +32,7 @@ class CarouselStateList extends State<CarouselList> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (_, i) => Padding(
                   padding: Sizes.s10.padX,
-                  child: const ProjectCard(),
+                  // child: const ProjectCard(),
                 ),
               ),
             ),

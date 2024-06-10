@@ -29,6 +29,11 @@ flutter:
       - assets/images/
       - assets/icons/
       - assets/data/
+      - assets/images/projects/dashboards/
+      - assets/images/projects/eservice/
+      - assets/images/projects/izdiwaj/
+      - assets/images/projects/todo/
+      - assets/images/projects/twindesigns/
 
   fonts:
     - family: Ubuntu

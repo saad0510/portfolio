@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../core/extensions/theme_ext.dart';
+import '../../entities/project_type.dart';
 import '../../theme/sizes.dart';
-import '../widgets/carousel_list.dart';
+import '../widgets/projects_list.dart';
 import 'base_section.dart';
-
-// TODO: add projects
 
 class ProjectsSection extends StatefulWidget {
   const ProjectsSection({super.key});
@@ -15,7 +14,15 @@ class ProjectsSection extends StatefulWidget {
 }
 
 class _ProjectsSectionState extends State<ProjectsSection> with TickerProviderStateMixin {
-  late final tabController = TabController(length: 4, vsync: this);
+  int selectedIndex = 0;
+
+  final tabs = {
+    'Mobile Apps': ProjectType.mobile,
+    'Websites': ProjectType.web,
+    'Desktops': ProjectType.desktop,
+  };
+
+  late final tabController = TabController(length: tabs.length, vsync: this);
 
   @override
   Widget build(BuildContext context) {
@@ -30,28 +37,18 @@ class _ProjectsSectionState extends State<ProjectsSection> with TickerProviderSt
           ),
           Sizes.s32.spaceY,
           TabBar(
+            onTap: (i) => setState(() => selectedIndex = i),
             isScrollable: true,
             controller: tabController,
             tabAlignment: TabAlignment.center,
-            tabs: const [
-              Text('All Works'),
-              Text('Mobile Apps'),
-              Text('Websites'),
-              Text('Desktops'),
+            tabs: [
+              for (final label in tabs.keys) //
+                Text(label),
             ],
           ),
           Sizes.s32.spaceY,
-          SizedBox(
-            height: 400,
-            child: TabBarView(
-              controller: tabController,
-              children: const [
-                CarouselList(),
-                CarouselList(),
-                CarouselList(),
-                CarouselList(),
-              ],
-            ),
+          ProjectsList(
+            type: tabs.entries.toList()[selectedIndex].value,
           ),
         ],
       ),

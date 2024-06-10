@@ -66,7 +66,79 @@
             "icon": "app_shortcut"
         }
     ],
-    "projects": [],
+    "projects": [
+        {
+            "id": "eservice",
+            "title": "E-Service",
+            "description": "A multi-vendor ecommerce application for trading different business services",
+            "explanation": "E-Service is a sophisticated multi-vendor e-commerce application designed specifically for trading various business services. It serves as a marketplace where service providers can offer a wide range of services, and customers can easily browse, compare, and purchase the services they need.",
+            "type": "mobile",
+            "links": {},
+            "images": [
+                "assets/images/projects/eservice/home.png",
+                "assets/images/projects/eservice/auth.png",
+                "assets/images/projects/eservice/product.png",
+                "assets/images/projects/eservice/settings.png"
+            ]
+        },
+        {
+            "id": "dashboards",
+            "title": "Dashboards",
+            "description": "A collection of web UI designs showcasing different types of beautiful user dashboards.",
+            "explanation": "",
+            "type": "web",
+            "links": {
+                "website": "https://graph-ui-apps.web.app"
+            },
+            "images": [
+                "assets/images/projects/dashboards/crypto.png",
+                "assets/images/projects/dashboards/pancake.png",
+                "assets/images/projects/dashboards/manage.png",
+                "assets/images/projects/dashboards/auth.png"
+            ]
+        },
+        {
+            "id": "izdiwaj",
+            "title": "Izdiwaj",
+            "description": "An islamic match making app for finding your soulmates powered by optimized recommendation algorithms with special focus on user privacy.",
+            "explanation": "",
+            "type": "mobile",
+            "links": {},
+            "images": [
+                "assets/images/projects/izdiwaj/home.png",
+                "assets/images/projects/izdiwaj/auth.png",
+                "assets/images/projects/izdiwaj/onboarding.png",
+                "assets/images/projects/izdiwaj/verification.png",
+                "assets/images/projects/izdiwaj/profile.png",
+                "assets/images/projects/izdiwaj/saves.png"
+            ]
+        },
+        {
+            "id": "todo",
+            "title": "Todo App",
+            "description": "A simple but beautiful application to keep track of you daily small tasks.",
+            "explanation": "",
+            "type": "mobile",
+            "links": {},
+            "images": [
+                "assets/images/projects/todo/home.png",
+                "assets/images/projects/todo/form.png"
+            ]
+        },
+        {
+            "id": "twindesigns",
+            "title": "Twin Designs",
+            "description": "An aesthetic modern looking portfolio website for an IT agency",
+            "explanation": "",
+            "type": "web",
+            "links": {},
+            "images": [
+                "assets/images/projects/twindesigns/success.png",
+                "assets/images/projects/twindesigns/workflow.png",
+                "assets/images/projects/twindesigns/end.png"
+            ]
+        }
+    ],
     "reviews": [
         {
             "username": "Usman Majeed",

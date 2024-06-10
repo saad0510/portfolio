@@ -35,4 +35,12 @@ enum ProjectType {
       ProjectType.desktop => Alignment.topLeft,
     };
   }
+
+  BoxFit get fit {
+    return switch (this) {
+      ProjectType.mobile => BoxFit.fitHeight,
+      ProjectType.web => BoxFit.fitWidth,
+      ProjectType.desktop => BoxFit.fitWidth,
+    };
+  }
 }

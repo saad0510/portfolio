@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../controllers/entites_provider.dart';
 import '../../core/extensions/theme_ext.dart';
 import '../../entities/project_data.dart';
+import '../../entities/project_type.dart';
 import '../../theme/sizes.dart';
 
 class ProjectDetailScreen extends StatelessWidget {
@@ -37,12 +38,15 @@ class ProjectDetailScreen extends StatelessWidget {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 for (final image in project.images) //
-                  Image.asset(
-                    image,
-                    width: project.type.width,
-                    height: project.type.height,
-                    alignment: project.type.imageAlignment,
-                    fit: BoxFit.fitHeight,
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    child: Image.asset(
+                      image,
+                      width: project.type == ProjectType.mobile ? 250 : double.infinity,
+                      height: project.type == ProjectType.mobile ? 500 : null,
+                      alignment: project.type.imageAlignment,
+                      fit: project.type.fit,
+                    ),
                   ),
               ],
             )

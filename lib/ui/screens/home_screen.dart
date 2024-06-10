@@ -9,6 +9,7 @@ import '../sections/nav_bar.dart';
 import '../sections/projects_section.dart';
 import '../sections/reviews_section.dart';
 import '../sections/services_section.dart';
+import 'project_detail_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -18,6 +19,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: const NavBar(),
       extendBodyBehindAppBar: true,
+      endDrawer: const ProjectDetailScreen(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -3,7 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
+import '../../controllers/data_provider.dart';
 import '../../controllers/navigation_controller.dart';
 import '../../entities/nav_items.dart';
 import '../../theme/app_buttons_styles.dart';
@@ -16,6 +18,7 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<NavigationController>();
+    final user = context.watch<DataProvider>().user;
 
     bool isSelected(NavItems item) {
       return item == controller.selected;
@@ -55,7 +58,7 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
                     Sizes.s24.spaceX,
                     ElevatedButton(
                       style: AppButtonsStyles.secondaryElevatedButton,
-                      onPressed: () {},
+                      onPressed: () => launchUrlString(user.links.meetingLink),
                       child: const Text('Let\'s talk'),
                     ),
                   ],

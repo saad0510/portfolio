@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../controllers/data_provider.dart';
 import '../../core/assets/app_images.dart';
@@ -101,7 +102,7 @@ class IntroductionText extends StatelessWidget {
         Align(
           alignment: isSmallScreen ? Alignment.center : Alignment.centerLeft,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () => launchUrlString(user.links.googleForm),
             child: const Text('Let\'s Work Together'),
           ),
         ),

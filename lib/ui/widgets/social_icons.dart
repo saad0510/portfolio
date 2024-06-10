@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
+import '../../controllers/data_provider.dart';
 import '../../core/assets/app_icon.dart';
 import '../../core/extensions/theme_ext.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/sizes.dart';
-
-// TODO: add links in whole application
 
 class SocialIconsRow extends StatelessWidget {
   const SocialIconsRow({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final user = context.watch<DataProvider>().user;
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -19,12 +22,14 @@ class SocialIconsRow extends StatelessWidget {
         children: [
           const InitialsIcon(),
           Sizes.s10.spaceX,
-          const SocialIcon(
+          SocialIcon(
             appIcon: AppIcons.linkedin,
+            link: user.links.linkedinLink,
           ),
           Sizes.s10.spaceX,
-          const SocialIcon(
+          SocialIcon(
             appIcon: AppIcons.github,
+            link: user.links.githubLink,
           ),
         ],
       ),
@@ -58,14 +63,16 @@ class SocialIcon extends StatelessWidget {
   const SocialIcon({
     super.key,
     required this.appIcon,
+    required this.link,
   });
 
   final AppIcons appIcon;
+  final String link;
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {},
+      onPressed: () => launchUrlString(link),
       style: IconButton.styleFrom(
         shape: const CircleBorder(),
       ),

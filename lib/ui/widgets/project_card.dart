@@ -49,7 +49,7 @@ class _ProjectCardState extends State<ProjectCard> {
                     decoration: BoxDecoration(
                       color: AppColors.gray.shade400,
                       image: DecorationImage(
-                        image: NetworkImage(widget.project.images.first),
+                        image: AssetImage(widget.project.images.first),
                         fit: BoxFit.cover,
                         alignment: widget.project.type.imageAlignment,
                       ),

@@ -30,6 +30,7 @@ flutter:
       - assets/images/
       - assets/icons/
       - assets/data/
+      - assets/images/projects/
       - assets/images/projects/dashboards/
       - assets/images/projects/eservice/
       - assets/images/projects/izdiwaj/

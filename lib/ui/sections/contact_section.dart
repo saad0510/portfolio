@@ -20,7 +20,7 @@ class ContactSection extends StatelessWidget {
             Text(
               'Let\'s Create Awesome\nProduct Together',
               textAlign: TextAlign.center,
-              style: context.typography.displaySmall,
+              style: context.typography.headlineLarge,
             ),
             Sizes.s32.spaceY,
             const ContactForm(),

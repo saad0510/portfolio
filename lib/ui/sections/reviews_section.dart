@@ -33,7 +33,7 @@ class ReviewsSection extends ConsumerWidget {
           Text(
             'What Clients Say',
             textAlign: TextAlign.center,
-            style: context.typography.displaySmall,
+            style: context.typography.headlineLarge,
           ),
           Sizes.s16.spaceY,
           const Text(

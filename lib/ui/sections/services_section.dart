@@ -23,7 +23,7 @@ class ServicesSection extends ConsumerWidget {
           Text(
             'My Services',
             textAlign: TextAlign.center,
-            style: context.typography.displaySmall,
+            style: context.typography.headlineLarge,
           ),
           Sizes.s16.spaceY,
           Text(

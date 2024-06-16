@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
+import '../../core/extensions/responsive_ext.dart';
 import '../../core/extensions/theme_ext.dart';
 import '../../providers/selected_project_provider.dart';
 import '../../theme/sizes.dart';
@@ -14,8 +16,15 @@ class ProjectDetailScreen extends ConsumerWidget {
 
     if (project == null) return const SizedBox.shrink();
 
+    final widthFactor = ResponsiveBreakpoints.of(context).map(
+      mobile: 0.9,
+      tablet: 0.7,
+      desktop: 0.5,
+      wideScreen: 0.5,
+    );
+
     return Drawer(
-      width: MediaQuery.sizeOf(context).width * 0.5,
+      width: MediaQuery.sizeOf(context).width * widthFactor,
       child: SingleChildScrollView(
         padding: Sizes.s24.pad,
         child: Column(

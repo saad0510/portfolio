@@ -82,7 +82,7 @@ class _AboutTextState extends ConsumerState<AboutText> with TickerProviderStateM
         Text(
           'About',
           textAlign: widget.isSmallScreen ? TextAlign.center : TextAlign.left,
-          style: context.typography.displaySmall,
+          style: context.typography.headlineLarge,
         ),
         Sizes.s16.spaceY,
         Text(

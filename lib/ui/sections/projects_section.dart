@@ -33,7 +33,7 @@ class _ProjectsSectionState extends State<ProjectsSection> with TickerProviderSt
           Text(
             'Projects',
             textAlign: TextAlign.center,
-            style: context.typography.displaySmall,
+            style: context.typography.headlineLarge,
           ),
           Sizes.s32.spaceY,
           TabBar(

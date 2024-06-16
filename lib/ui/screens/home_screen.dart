@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../entities/nav_items.dart';
 import '../../theme/sizes.dart';
 import '../sections/about_section.dart';
 import '../sections/contact_section.dart';
@@ -25,13 +26,27 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Sizes.s100.spaceY,
-            const IntroductionSection(),
-            const AboutSection(),
-            const ServicesSection(),
-            const ProjectsSection(),
-            const ReviewsSection(),
-            const ContactSection(),
-            const Footer(),
+            IntroductionSection(
+              key: NavItems.home(),
+            ),
+            AboutSection(
+              key: NavItems.about(),
+            ),
+            ServicesSection(
+              key: NavItems.services(),
+            ),
+            ProjectsSection(
+              key: NavItems.projects(),
+            ),
+            const ReviewsSection(
+              key: ValueKey('reviews'),
+            ),
+            ContactSection(
+              key: NavItems.contact(),
+            ),
+            const Footer(
+              key: ValueKey('footer'),
+            ),
           ],
         ),
       ),

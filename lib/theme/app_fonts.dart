@@ -93,7 +93,7 @@ class AppFonts {
     displayLarge: TextStyle(),
     displayMedium: TextStyle(),
     displaySmall: heading3,
-    headlineLarge: TextStyle(),
+    headlineLarge: heading4,
     headlineMedium: heading6,
     headlineSmall: TextStyle(),
     titleLarge: TextStyle(),

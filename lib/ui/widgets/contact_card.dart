@@ -26,7 +26,7 @@ class ContactCard extends StatelessWidget {
           size: 40,
         ),
         Sizes.s24.spaceY,
-        Text(
+        SelectableText(
           value,
           textAlign: TextAlign.center,
         ),

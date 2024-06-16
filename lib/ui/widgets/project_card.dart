@@ -86,6 +86,8 @@ class _ProjectCardState extends State<ProjectCard> {
                                 Text(
                                   widget.project.description,
                                   style: context.typography.bodySmall.colored(Colors.white),
+                                  maxLines: 4,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),

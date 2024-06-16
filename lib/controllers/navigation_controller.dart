@@ -1,14 +1,18 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../entities/nav_items.dart';
 
-class NavigationController extends ChangeNotifier {
-  NavItems selected = NavItems.home;
-
+class NavigationController extends Notifier<NavItems> {
   NavigationController();
 
+  @override
+  NavItems build() => NavItems.home;
+
   void setItem(NavItems navItems) {
-    selected = navItems;
-    notifyListeners();
+    state = navItems;
   }
+
+  NavItems get selected => state;
 }
+
+final navigationProvider = NotifierProvider<NavigationController, NavItems>(NavigationController.new);

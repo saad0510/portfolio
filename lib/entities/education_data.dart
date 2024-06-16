@@ -1,19 +1,27 @@
-class EducationData {
+import '../core/extensions/json_ext.dart';
+import 'sortable.dart';
+
+class EducationData extends Sortable {
+  final String id;
   final String degree;
   final String institute;
   final String score;
 
   const EducationData({
+    required this.id,
     required this.degree,
     required this.institute,
     required this.score,
+    required super.sortOrder,
   });
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'degree': degree,
       'institute': institute,
       'score': score,
+      'sort_order': score,
     };
   }
 
@@ -21,9 +29,11 @@ class EducationData {
     final map = Map.from(data ?? {});
 
     return EducationData(
-      degree: map['degree']?.toString() ?? '',
-      institute: map['institute']?.toString() ?? '',
-      score: map['score']?.toString() ?? '',
+      id: map.decodeStr('id'),
+      degree: map.decodeStr('degree'),
+      institute: map.decodeStr('institute'),
+      score: map.decodeStr('score'),
+      sortOrder: map.decodeInt('sort_order'),
     );
   }
 }

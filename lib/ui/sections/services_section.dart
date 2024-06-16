@@ -1,20 +1,20 @@
 import "package:flutter/material.dart";
-import "package:provider/provider.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 
-import "../../controllers/data_provider.dart";
 import "../../core/extensions/theme_ext.dart";
+import "../../providers/current_user_provider.dart";
+import "../../providers/services_provider.dart";
 import "../../theme/sizes.dart";
 import "../widgets/service_card.dart";
 import 'base_section.dart';
 
-class ServicesSection extends StatelessWidget {
+class ServicesSection extends ConsumerWidget {
   const ServicesSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final data = context.watch<DataProvider>();
-    final user = data.user;
-    final services = data.services;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(currentUserProvider);
+    final services = ref.watch(servicesProvider).valueOrNull ?? const [];
 
     return BaseSection(
       child: Column(
@@ -44,6 +44,7 @@ class ServicesSection extends StatelessWidget {
                 final service = services[i];
 
                 return ServiceCard(
+                  key: ValueKey(service.id),
                   title: service.title,
                   subtitle: service.subtitle,
                   icon: service.icon,

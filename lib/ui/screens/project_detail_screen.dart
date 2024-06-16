@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../controllers/entites_provider.dart';
 import '../../core/extensions/theme_ext.dart';
-import '../../entities/project_data.dart';
 import '../../entities/project_type.dart';
+import '../../providers/selected_project_provider.dart';
 import '../../theme/sizes.dart';
 
-class ProjectDetailScreen extends StatelessWidget {
+class ProjectDetailScreen extends ConsumerWidget {
   const ProjectDetailScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final project = context.select<EntitesProvider, ProjectData?>((v) => v.selectedProject)!;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final project = ref.watch(selectedProjectProvider);
 
     return Drawer(
       width: MediaQuery.sizeOf(context).width * 0.5,
@@ -40,7 +39,7 @@ class ProjectDetailScreen extends StatelessWidget {
                 for (final image in project.images) //
                   ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
-                    child: Image.asset(
+                    child: Image.network(
                       image,
                       width: project.type == ProjectType.mobile ? 250 : double.infinity,
                       height: project.type == ProjectType.mobile ? 500 : null,

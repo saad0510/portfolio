@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-import '../../controllers/data_provider.dart';
 import '../../core/assets/app_icon.dart';
 import '../../core/extensions/theme_ext.dart';
+import '../../providers/current_user_provider.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/sizes.dart';
 
-class SocialIconsRow extends StatelessWidget {
+class SocialIconsRow extends ConsumerWidget {
   const SocialIconsRow({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final user = context.watch<DataProvider>().user;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(currentUserProvider);
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,

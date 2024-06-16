@@ -1,7 +1,9 @@
+import '../core/extensions/json_ext.dart';
 import 'project_links.dart';
 import 'project_type.dart';
+import 'sortable.dart';
 
-class ProjectData {
+class ProjectData extends Sortable {
   final String id;
   final String title;
   final String description;
@@ -18,6 +20,7 @@ class ProjectData {
     required this.type,
     required this.links,
     required this.images,
+    required super.sortOrder,
   });
 
   Map<String, dynamic> toMap() {
@@ -26,9 +29,10 @@ class ProjectData {
       'title': title,
       'description': description,
       'explanation': explanation,
-      'type': type,
-      'links': links,
+      'type': type.toMap(),
+      'links': links.toMap(),
       'images': images,
+      'sort_order': sortOrder,
     };
   }
 
@@ -36,13 +40,14 @@ class ProjectData {
     final map = Map.from(data ?? {});
 
     return ProjectData(
-      id: map['id']?.toString() ?? '',
-      title: map['title']?.toString() ?? '',
-      description: map['description']?.toString() ?? '',
-      explanation: map['explanation']?.toString() ?? '',
+      id: map.decodeStr('id'),
+      title: map.decodeStr('title'),
+      description: map.decodeStr('description'),
+      explanation: map.decodeStr('explanation'),
       type: ProjectType.fromMap(map['type']),
-      links: ProjectLinks.fromMap(map['links'] ?? {}),
-      images: List.from(map['images'] ?? '').map((e) => e.toString()).toList(),
+      links: ProjectLinks.fromMap(map['links']),
+      images: map.decodeList('images').map((e) => e.toString()).toList(),
+      sortOrder: map.decodeInt('sort_order'),
     );
   }
 }

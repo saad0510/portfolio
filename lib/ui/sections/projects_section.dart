@@ -16,7 +16,7 @@ class ProjectsSection extends StatefulWidget {
 class _ProjectsSectionState extends State<ProjectsSection> with TickerProviderStateMixin {
   int selectedIndex = 0;
 
-  final tabs = {
+  static const tabs = {
     'Mobile Apps': ProjectType.mobile,
     'Websites': ProjectType.web,
     'Desktops': ProjectType.desktop,
@@ -48,7 +48,7 @@ class _ProjectsSectionState extends State<ProjectsSection> with TickerProviderSt
           ),
           Sizes.s32.spaceY,
           ProjectsList(
-            type: tabs.entries.toList()[selectedIndex].value,
+            type: tabs.values.toList()[selectedIndex],
           ),
         ],
       ),

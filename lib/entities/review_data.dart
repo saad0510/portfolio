@@ -1,4 +1,8 @@
-class ReviewData {
+import '../core/extensions/json_ext.dart';
+import 'sortable.dart';
+
+class ReviewData extends Sortable {
+  final String id;
   final String username;
   final String imageUrl;
   final String position;
@@ -8,6 +12,7 @@ class ReviewData {
   final String text;
 
   const ReviewData({
+    required this.id,
     required this.username,
     required this.imageUrl,
     required this.position,
@@ -15,10 +20,12 @@ class ReviewData {
     required this.companyUrl,
     required this.rating,
     required this.text,
+    required super.sortOrder,
   });
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'username': username,
       'image_url': imageUrl,
       'position': position,
@@ -26,6 +33,7 @@ class ReviewData {
       'company_url': companyUrl,
       'rating': rating,
       'text': text,
+      'sort_order': sortOrder,
     };
   }
 
@@ -33,13 +41,15 @@ class ReviewData {
     final map = Map.from(data ?? {});
 
     return ReviewData(
-      username: map['username']?.toString() ?? '',
-      imageUrl: map['image_url']?.toString() ?? '',
-      position: map['position']?.toString() ?? '',
-      company: map['company']?.toString() ?? '',
-      companyUrl: map['company_url']?.toString() ?? '',
-      rating: int.tryParse(map['rating']?.toString() ?? '') ?? 0,
-      text: map['text']?.toString() ?? '',
+      id: map.decodeStr('id'),
+      username: map.decodeStr('username'),
+      imageUrl: map.decodeStr('image_url'),
+      position: map.decodeStr('position'),
+      company: map.decodeStr('company'),
+      companyUrl: map.decodeStr('company_url'),
+      rating: map.decodeInt('rating'),
+      text: map.decodeStr('text'),
+      sortOrder: map.decodeInt('sort_order'),
     );
   }
 }

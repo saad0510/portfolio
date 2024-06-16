@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../controllers/entites_provider.dart';
 import '../../core/extensions/theme_ext.dart';
 import '../../entities/project_data.dart';
 import '../../theme/app_colors.dart';
@@ -30,10 +28,7 @@ class _ProjectCardState extends State<ProjectCard> {
       onHover: (_) => setState(() => hovered = true),
       onExit: (_) => setState(() => hovered = false),
       child: InkWell(
-        onTap: () {
-          context.read<EntitesProvider>().selectProject(widget.project);
-          Scaffold.of(context).openEndDrawer();
-        },
+        onTap: () => Scaffold.of(context).openEndDrawer(),
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           child: SizedBox(
@@ -49,7 +44,7 @@ class _ProjectCardState extends State<ProjectCard> {
                     decoration: BoxDecoration(
                       color: AppColors.gray.shade400,
                       image: DecorationImage(
-                        image: AssetImage(widget.project.images.first),
+                        image: NetworkImage(widget.project.images.first),
                         fit: BoxFit.cover,
                         alignment: widget.project.type.imageAlignment,
                       ),

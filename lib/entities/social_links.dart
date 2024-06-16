@@ -1,3 +1,5 @@
+import '../core/extensions/json_ext.dart';
+
 class SocialLinks {
   final String googleForm;
   final String meetingLink;
@@ -20,12 +22,14 @@ class SocialLinks {
     };
   }
 
-  factory SocialLinks.fromMap(Map<String, dynamic> map) {
+  factory SocialLinks.fromMap(dynamic data) {
+    final map = Map.from(data ?? {});
+
     return SocialLinks(
-      googleForm: map['google_form']?.toString() ?? '',
-      meetingLink: map['meeting']?.toString() ?? '',
-      githubLink: map['github']?.toString() ?? '',
-      linkedinLink: map['linkedin']?.toString() ?? '',
+      googleForm: map.decodeStr('google_form'),
+      meetingLink: map.decodeStr('meeting'),
+      githubLink: map.decodeStr('github'),
+      linkedinLink: map.decodeStr('linkedin'),
     );
   }
 }

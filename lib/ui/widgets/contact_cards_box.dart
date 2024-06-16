@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../controllers/data_provider.dart';
 import '../../core/assets/app_icon.dart';
+import '../../providers/current_user_provider.dart';
 import '../../theme/sizes.dart';
 import 'contact_card.dart';
 
-class ContactCardsBox extends StatelessWidget {
+class ContactCardsBox extends ConsumerWidget {
   const ContactCardsBox({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final user = context.watch<DataProvider>().user;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(currentUserProvider);
 
     return Wrap(
       alignment: WrapAlignment.spaceEvenly,

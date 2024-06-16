@@ -1,14 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'controllers/data_provider.dart';
-import 'controllers/entites_provider.dart';
-import 'controllers/navigation_controller.dart';
+import 'firebase_options.dart';
 import 'theme/app_theme.dart';
 import 'ui/screens/home_screen.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -19,12 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaxWidthBox(
       maxWidth: 2000,
-      child: MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => DataProvider()),
-          ChangeNotifierProvider(create: (_) => EntitesProvider()),
-          ChangeNotifierProvider(create: (_) => NavigationController()),
-        ],
+      child: ProviderScope(
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Saad Portfolio',

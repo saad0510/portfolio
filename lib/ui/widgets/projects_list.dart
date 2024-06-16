@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../controllers/data_provider.dart';
 import '../../entities/project_type.dart';
+import '../../providers/projects_provider.dart';
+import '../../providers/selected_project_provider.dart';
 import '../../theme/sizes.dart';
 import 'project_card.dart';
 
-class ProjectsList extends StatelessWidget {
+class ProjectsList extends ConsumerWidget {
   const ProjectsList({
     super.key,
     required this.type,
@@ -15,8 +16,9 @@ class ProjectsList extends StatelessWidget {
   final ProjectType type;
 
   @override
-  Widget build(BuildContext context) {
-    final projects = context.watch<DataProvider>().projects.where((p) => type == p.type).toList();
+  Widget build(BuildContext context, WidgetRef ref) {
+    var projects = ref.watch(projectsProvider).valueOrNull ?? const [];
+    projects = projects.where((p) => p.type == type).toList();
 
     if (projects.isEmpty)
       return const Center(
@@ -32,9 +34,14 @@ class ProjectsList extends StatelessWidget {
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         for (final project in projects) //
-          ProjectCard(
-            key: ValueKey(project.id),
-            project: project,
+          ProviderScope(
+            overrides: [
+              selectedProjectProvider.overrideWithValue(project),
+            ],
+            child: ProjectCard(
+              key: ValueKey(project.id),
+              project: project,
+            ),
           ),
       ],
     );

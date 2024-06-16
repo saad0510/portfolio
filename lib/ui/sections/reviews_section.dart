@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../controllers/data_provider.dart';
 import '../../core/extensions/theme_ext.dart';
+import '../../providers/reviews_provider.dart';
 import '../../theme/sizes.dart';
 import '../widgets/review_card.dart';
 import 'base_section.dart';
 
-class ReviewsSection extends StatelessWidget {
+class ReviewsSection extends ConsumerWidget {
   const ReviewsSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final reviews = context.watch<DataProvider>().reviews;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final reviews = ref.watch(reviewsProvider).valueOrNull ?? const [];
 
     final reviewCards = [
       for (final review in reviews) ...[
-        ReviewCard(review: review),
+        ReviewCard(
+          key: ValueKey(review.id),
+          review: review,
+        ),
         Sizes.s24.spaceX,
       ]
     ];

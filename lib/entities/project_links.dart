@@ -1,3 +1,5 @@
+import '../core/extensions/json_ext.dart';
+
 class ProjectLinks {
   final String github;
   final String website;
@@ -27,11 +29,11 @@ class ProjectLinks {
     final map = Map.from(data ?? {});
 
     return ProjectLinks(
-      github: map['github']?.toString() ?? '',
-      website: map['website']?.toString() ?? '',
-      playstore: map['playstore']?.toString() ?? '',
-      applestore: map['applestore']?.toString() ?? '',
-      apkDownload: map['apk_download']?.toString() ?? '',
+      github: map.decodeStr('github'),
+      website: map.decodeStr('website'),
+      playstore: map.decodeStr('playstore'),
+      applestore: map.decodeStr('applestore'),
+      apkDownload: map.decodeStr('apk_download'),
     );
   }
 }

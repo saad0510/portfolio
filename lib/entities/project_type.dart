@@ -8,7 +8,7 @@ enum ProjectType {
   String toMap() => name;
 
   static ProjectType fromMap(dynamic data) {
-    final str = data!.toString().trim();
+    final str = data?.toString().trim() ?? '';
     return values.byName(str);
   }
 

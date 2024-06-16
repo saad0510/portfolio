@@ -1,3 +1,5 @@
+import '../core/extensions/json_ext.dart';
+
 class StatisticsData {
   final int experienceInYears;
   final int projectsDone;
@@ -21,13 +23,13 @@ class StatisticsData {
   }
 
   factory StatisticsData.fromMap(dynamic data) {
-    final map = Map<String, dynamic>.from(data ?? {});
+    final map = Map.from(data ?? {});
 
     return StatisticsData(
-      experienceInYears: int.tryParse(map['experience_in_yrs']?.toString() ?? '') ?? 0,
-      projectsDone: int.tryParse(map['projects_done']?.toString() ?? '') ?? 0,
-      customerSatisfaction: int.tryParse(map['customer_satisfaction_in_percent']?.toString() ?? '') ?? 0,
-      awardsWon: int.tryParse(map['awards']?.toString() ?? '') ?? 0,
+      experienceInYears: map.decodeInt('experience_in_yrs'),
+      projectsDone: map.decodeInt('projects_done'),
+      customerSatisfaction: map.decodeInt('customer_satisfaction_in_percent'),
+      awardsWon: map.decodeInt('awards'),
     );
   }
 }

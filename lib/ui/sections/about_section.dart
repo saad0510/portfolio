@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import '../../controllers/data_provider.dart';
-import '../../core/assets/app_images.dart';
 import '../../core/extensions/theme_ext.dart';
+import '../../providers/current_user_provider.dart';
 import '../../theme/sizes.dart';
 import '../widgets/education_tab.dart';
 import '../widgets/experience_tab.dart';
@@ -29,15 +28,23 @@ class AboutSection extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(16)),
-            child: Image.asset(
-              AppImages.mobile_development.path,
-              height: double.infinity,
-              width: 350,
-              alignment: Alignment.topLeft,
-              fit: BoxFit.fitWidth,
-            ),
+          Consumer(
+            builder: (context, ref, child) {
+              final user = ref.watch(currentUserProvider);
+              if (user.images.length < 2) return const SizedBox.shrink();
+
+              return ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(16)),
+                child: Image.network(
+                  user.images[1],
+                  height: double.infinity,
+                  width: 350,
+                  cacheHeight: 1080,
+                  alignment: Alignment.topLeft,
+                  fit: BoxFit.fitWidth,
+                ),
+              );
+            },
           ),
           Sizes.s64.spaceX,
           const Expanded(
@@ -50,7 +57,7 @@ class AboutSection extends StatelessWidget {
   }
 }
 
-class AboutText extends StatefulWidget {
+class AboutText extends ConsumerStatefulWidget {
   const AboutText({
     super.key,
     this.isSmallScreen = false,
@@ -59,15 +66,15 @@ class AboutText extends StatefulWidget {
   final bool isSmallScreen;
 
   @override
-  State<AboutText> createState() => _AboutTextState();
+  ConsumerState<AboutText> createState() => _AboutTextState();
 }
 
-class _AboutTextState extends State<AboutText> with TickerProviderStateMixin {
+class _AboutTextState extends ConsumerState<AboutText> with TickerProviderStateMixin {
   late final tabController = TabController(length: 3, vsync: this);
 
   @override
   Widget build(BuildContext context) {
-    final user = context.watch<DataProvider>().user;
+    final user = ref.watch(currentUserProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

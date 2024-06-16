@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../theme/sizes.dart';
-import 'project_card.dart';
 
 class CarouselList extends StatefulWidget {
   const CarouselList({super.key});

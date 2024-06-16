@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-import '../../controllers/data_provider.dart';
-import '../../core/assets/app_images.dart';
 import '../../core/extensions/theme_ext.dart';
 import '../../core/utils/semi_circle_clipper.dart';
+import '../../providers/current_user_provider.dart';
 import '../../theme/sizes.dart';
 import 'base_section.dart';
 
@@ -52,7 +51,7 @@ class IntroductionSection extends StatelessWidget {
   }
 }
 
-class IntroductionText extends StatelessWidget {
+class IntroductionText extends ConsumerWidget {
   const IntroductionText({
     super.key,
     this.isSmallScreen = false,
@@ -61,8 +60,8 @@ class IntroductionText extends StatelessWidget {
   final bool isSmallScreen;
 
   @override
-  Widget build(BuildContext context) {
-    final user = context.watch<DataProvider>().user;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(currentUserProvider);
 
     final textAlign = isSmallScreen ? TextAlign.center : TextAlign.left;
 
@@ -111,7 +110,7 @@ class IntroductionText extends StatelessWidget {
   }
 }
 
-class IntroductionImage extends StatelessWidget {
+class IntroductionImage extends ConsumerWidget {
   const IntroductionImage({
     super.key,
     this.isSmallScreen = false,
@@ -120,9 +119,13 @@ class IntroductionImage extends StatelessWidget {
   final bool isSmallScreen;
 
   @override
-  Widget build(BuildContext context) {
-    return Image.asset(
-      AppImages.me.path,
+  Widget build(BuildContext context, WidgetRef ref) {
+    final images = ref.watch(currentUserProvider).images;
+
+    if (images.isEmpty) return const SizedBox.shrink();
+
+    return Image.network(
+      images.first,
       width: double.infinity,
       height: isSmallScreen ? null : double.infinity,
       fit: isSmallScreen ? BoxFit.fitWidth : BoxFit.fitHeight,

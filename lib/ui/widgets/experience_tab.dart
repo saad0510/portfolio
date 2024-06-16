@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../controllers/data_provider.dart';
+import '../../providers/current_user_provider.dart';
 import '../../theme/sizes.dart';
 import 'stats_card.dart';
 
-class ExperienceTab extends StatelessWidget {
+class ExperienceTab extends ConsumerWidget {
   const ExperienceTab({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final stats = context.watch<DataProvider>().user.statistics;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final stats = ref.watch(currentUserProvider).statistics;
 
     return SingleChildScrollView(
       child: Column(

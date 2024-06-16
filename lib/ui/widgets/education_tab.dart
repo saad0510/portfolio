@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../controllers/data_provider.dart';
+import '../../providers/educations_provider.dart';
 import '../../theme/sizes.dart';
 
-class EducationTab extends StatelessWidget {
+class EducationTab extends ConsumerWidget {
   const EducationTab({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final educations = context.watch<DataProvider>().educations;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final educations = ref.watch(educationsProvider).valueOrNull ?? const [];
 
     final educationCards = [
       for (final education in educations) ...[

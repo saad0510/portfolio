@@ -12,19 +12,19 @@ enum ProjectType {
     return values.byName(str);
   }
 
-  double get width {
+  double? width({bool compact = false}) {
     return switch (this) {
       ProjectType.mobile => 250,
-      ProjectType.web => 500,
-      ProjectType.desktop => 500,
+      ProjectType.web => compact ? double.infinity : 500,
+      ProjectType.desktop => compact ? double.infinity : 500,
     };
   }
 
-  double get height {
+  double? height({bool compact = false}) {
     return switch (this) {
       ProjectType.mobile => 500,
-      ProjectType.web => 400,
-      ProjectType.desktop => 400,
+      ProjectType.web => compact ? null : 400,
+      ProjectType.desktop => compact ? null : 400,
     };
   }
 

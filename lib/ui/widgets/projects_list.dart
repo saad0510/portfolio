@@ -36,11 +36,15 @@ class ProjectsList extends ConsumerWidget {
         for (final project in projects) //
           ProviderScope(
             overrides: [
-              selectedProjectProvider.overrideWithValue(project),
+              selectedProjectProvider,
             ],
             child: ProjectCard(
               key: ValueKey(project.id),
               project: project,
+              onTap: () {
+                ref.read(selectedProjectProvider.notifier).state = project;
+                Scaffold.of(context).openEndDrawer();
+              },
             ),
           ),
       ],

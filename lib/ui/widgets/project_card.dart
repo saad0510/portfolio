@@ -9,9 +9,11 @@ class ProjectCard extends StatefulWidget {
   const ProjectCard({
     super.key,
     required this.project,
+    this.onTap,
   });
 
   final ProjectData project;
+  final VoidCallback? onTap;
 
   @override
   State<ProjectCard> createState() => _ProjectCardState();
@@ -24,71 +26,74 @@ class _ProjectCardState extends State<ProjectCard> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onHover: (_) => setState(() => hovered = true),
-      onExit: (_) => setState(() => hovered = false),
-      child: InkWell(
-        onTap: () => Scaffold.of(context).openEndDrawer(),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
-          child: SizedBox(
-            height: widget.project.type.height,
-            width: widget.project.type.width,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Positioned.fill(
-                  child: AnimatedContainer(
-                    duration: duration,
-                    curve: Curves.decelerate,
-                    decoration: BoxDecoration(
-                      color: AppColors.gray.shade400,
-                      image: DecorationImage(
-                        image: NetworkImage(widget.project.images.first),
-                        fit: BoxFit.cover,
-                        alignment: widget.project.type.imageAlignment,
+    return Card(
+      elevation: 1,
+      child: MouseRegion(
+        onHover: (_) => setState(() => hovered = true),
+        onExit: (_) => setState(() => hovered = false),
+        child: InkWell(
+          onTap: widget.onTap,
+          child: ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
+            child: SizedBox(
+              height: widget.project.type.height(),
+              width: widget.project.type.width(),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Positioned.fill(
+                    child: AnimatedContainer(
+                      duration: duration,
+                      curve: Curves.decelerate,
+                      decoration: BoxDecoration(
+                        color: AppColors.gray.shade400,
+                        image: DecorationImage(
+                          image: NetworkImage(widget.project.images.first),
+                          fit: BoxFit.cover,
+                          alignment: widget.project.type.imageAlignment,
+                        ),
                       ),
-                    ),
-                    foregroundDecoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                        colors: hovered //
-                            ? [Colors.black87, Colors.black12]
-                            : [Colors.transparent, Colors.transparent],
+                      foregroundDecoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                          colors: hovered //
+                              ? [Colors.black87, Colors.black12]
+                              : [Colors.transparent, Colors.transparent],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                AnimatedPositioned(
-                  duration: duration,
-                  curve: Curves.elasticInOut,
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: hovered ? 0 : -100,
-                  child: hovered
-                      ? Padding(
-                          padding: Sizes.s16.pad,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Text(
-                                widget.project.title,
-                                style: context.typography.labelSmall.colored(Colors.white),
-                              ),
-                              Sizes.s10.spaceY,
-                              Text(
-                                widget.project.description,
-                                style: context.typography.bodySmall.colored(Colors.white),
-                              ),
-                            ],
-                          ),
-                        )
-                      : const SizedBox(),
-                )
-              ],
+                  AnimatedPositioned(
+                    duration: duration,
+                    curve: Curves.elasticInOut,
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: hovered ? 0 : -100,
+                    child: hovered
+                        ? Padding(
+                            padding: Sizes.s16.pad,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Text(
+                                  widget.project.title,
+                                  style: context.typography.labelSmall.colored(Colors.white),
+                                ),
+                                Sizes.s10.spaceY,
+                                Text(
+                                  widget.project.description,
+                                  style: context.typography.bodySmall.colored(Colors.white),
+                                ),
+                              ],
+                            ),
+                          )
+                        : const SizedBox(),
+                  )
+                ],
+              ),
             ),
           ),
         ),

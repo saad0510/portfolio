@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/extensions/theme_ext.dart';
-import '../../entities/project_type.dart';
 import '../../providers/selected_project_provider.dart';
 import '../../theme/sizes.dart';
 
@@ -12,6 +11,8 @@ class ProjectDetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final project = ref.watch(selectedProjectProvider);
+
+    if (project == null) return const SizedBox.shrink();
 
     return Drawer(
       width: MediaQuery.sizeOf(context).width * 0.5,
@@ -30,21 +31,24 @@ class ProjectDetailScreen extends ConsumerWidget {
             ),
             Sizes.s32.spaceY,
             Wrap(
-              spacing: Sizes.s16.value,
-              runSpacing: Sizes.s16.value,
+              spacing: Sizes.s24.value,
+              runSpacing: Sizes.s24.value,
               alignment: WrapAlignment.center,
               runAlignment: WrapAlignment.start,
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 for (final image in project.images) //
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
-                    child: Image.network(
-                      image,
-                      width: project.type == ProjectType.mobile ? 250 : double.infinity,
-                      height: project.type == ProjectType.mobile ? 500 : null,
-                      alignment: project.type.imageAlignment,
-                      fit: project.type.fit,
+                  Card(
+                    elevation: 1,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      child: Image.network(
+                        image,
+                        width: project.type.width(compact: true),
+                        height: project.type.height(compact: true),
+                        alignment: Alignment.topCenter,
+                        fit: BoxFit.fitWidth,
+                      ),
                     ),
                   ),
               ],

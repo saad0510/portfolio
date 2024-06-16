@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import 'core/database/app_boxes.dart';
 import 'firebase_options.dart';
 import 'theme/app_theme.dart';
 import 'ui/screens/home_screen.dart';
@@ -11,6 +12,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await AppBoxes.openBoxes();
   runApp(const MyApp());
 }
 

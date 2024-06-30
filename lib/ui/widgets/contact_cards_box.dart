@@ -20,18 +20,21 @@ class ContactCardsBox extends ConsumerWidget {
       spacing: Sizes.s32.value,
       runSpacing: Sizes.s64.value,
       children: [
-        ContactCard(
-          icon: AppIcons.phone,
-          value: user.phone,
-        ),
-        ContactCard(
-          icon: AppIcons.send,
-          value: user.email.split('@').join('\n@'),
-        ),
-        ContactCard(
-          icon: AppIcons.home,
-          value: user.residency,
-        ),
+        if (user.phone.isNotEmpty)
+          ContactCard(
+            icon: AppIcons.phone,
+            value: user.phone,
+          ),
+        if (user.email.isNotEmpty)
+          ContactCard(
+            icon: AppIcons.send,
+            value: user.email.split('@').join('\n@'),
+          ),
+        if (user.residency.isNotEmpty)
+          ContactCard(
+            icon: AppIcons.home,
+            value: user.residency,
+          ),
       ],
     );
   }

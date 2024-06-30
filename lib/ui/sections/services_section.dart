@@ -26,9 +26,14 @@ class ServicesSection extends ConsumerWidget {
             style: context.typography.headlineLarge,
           ),
           Sizes.s16.spaceY,
-          Text(
-            user.bio,
-            textAlign: TextAlign.center,
+          SizedBox(
+            width: 600,
+            child: Center(
+              child: Text(
+                user.bio,
+                textAlign: TextAlign.center,
+              ),
+            ),
           ),
           Sizes.s16.spaceY,
           Sizes.s24.spaceY,

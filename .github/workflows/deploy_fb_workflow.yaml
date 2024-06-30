@@ -22,7 +22,7 @@ jobs:
         curl -sL https://firebase.tools | bash
 
     - name: Build Flutter Web
-      run: flutter build web --release
+      run: flutter build web --wasm --release
 
     - name: Deploy to Firebase Hosting
       run: firebase deploy --only hosting

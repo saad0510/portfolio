@@ -47,7 +47,7 @@ class DataRepo {
 
   Future<String> getAppVersion() async {
     final doc = await firestore.collection('settings').doc('versions').get();
-    return doc.get('latest_version')?.toString() ?? '';
+    return doc.get('portfolio')?.toString() ?? '';
   }
 
   static final firestore = FirebaseFirestore.instance;

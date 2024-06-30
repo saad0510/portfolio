@@ -1,6 +1,4 @@
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html show window;
-
+import 'package:web/web.dart' show window;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,7 +15,7 @@ final appVersionProvider = FutureProvider<String>(
     await prefs.setString('app_version', remoteVersion);
 
     if (localVersion != remoteVersion) {
-      html.window.location.reload();
+      window.location.reload();
     }
 
     return remoteVersion;

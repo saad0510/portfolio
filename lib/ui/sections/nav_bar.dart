@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../controllers/navigation_controller.dart';
 import '../../entities/nav_items.dart';
+import '../../providers/app_version_provider.dart';
 import '../../providers/current_user_provider.dart';
 import '../../theme/app_buttons_styles.dart';
 import '../../theme/sizes.dart';
@@ -17,6 +18,8 @@ class NavBar extends ConsumerWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(appVersionProvider);
+
     final user = ref.watch(currentUserProvider);
     final selected = ref.watch(navigationProvider);
 

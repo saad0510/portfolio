@@ -45,6 +45,11 @@ class DataRepo {
     return data.toList()..sort();
   }
 
+  Future<String> getAppVersion() async {
+    final doc = await firestore.collection('settings').doc('versions').get();
+    return doc.get('latest_version')?.toString() ?? '';
+  }
+
   static final firestore = FirebaseFirestore.instance;
 
   static final usersRef = firestore

@@ -4,6 +4,7 @@ import '../../entities/review_data.dart';
 import '../../entities/services_data.dart';
 import '../../entities/skill_data.dart';
 import '../../entities/user_data.dart';
+import '../../entities/video_data.dart';
 import 'iterable_data_box.dart';
 
 class AppBoxes {
@@ -51,6 +52,13 @@ class AppBoxes {
     fromMap: ReviewData.fromMap,
   );
 
+  static final videos = IterableDataBox(
+    'videos',
+    toId: (o) => o.id,
+    toMap: (o) => o.toMap(),
+    fromMap: VideoData.fromMap,
+  );
+
   static final boxes = [
     users,
     skills,
@@ -58,6 +66,7 @@ class AppBoxes {
     services,
     projects,
     reviews,
+    videos,
   ];
 
   static Future<void> openBoxes() async {

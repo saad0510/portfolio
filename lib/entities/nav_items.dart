@@ -7,6 +7,7 @@ enum NavItems {
   about,
   services,
   projects,
+  videos,
   contact,
   ;
 

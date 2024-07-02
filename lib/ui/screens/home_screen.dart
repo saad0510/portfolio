@@ -10,6 +10,7 @@ import '../sections/nav_bar.dart';
 import '../sections/projects_section.dart';
 import '../sections/reviews_section.dart';
 import '../sections/services_section.dart';
+import '../sections/videos_section.dart';
 import 'project_detail_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -40,6 +41,9 @@ class HomeScreen extends StatelessWidget {
             ),
             const ReviewsSection(
               key: ValueKey('reviews'),
+            ),
+            VideosSection(
+              key: NavItems.videos(),
             ),
             ContactSection(
               key: NavItems.contact(),

@@ -2,42 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/extensions/theme_ext.dart';
-import '../../providers/reviews_provider.dart';
+import '../../providers/videos_provider.dart';
 import '../../theme/sizes.dart';
-import '../widgets/review_card.dart';
+import '../widgets/video_card.dart';
 import 'base_section.dart';
 
-class ReviewsSection extends ConsumerWidget {
-  const ReviewsSection({super.key});
+class VideosSection extends ConsumerWidget {
+  const VideosSection({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final reviews = ref.watch(reviewsProvider).valueOrNull ?? const [];
+    final videos = ref.watch(videosProvider).valueOrNull ?? const [];
 
-    final reviewCards = [
-      for (final review in reviews) ...[
-        ReviewCard(
-          key: ValueKey(review.id),
-          review: review,
-        ),
+    final videoCards = [
+      for (final video in videos) ...[
+        VideoCard(video: video),
         Sizes.s24.spaceX,
       ]
     ];
 
-    if (reviewCards.isNotEmpty) reviewCards.removeLast();
+    if (videoCards.isNotEmpty) videoCards.removeLast();
 
     return BaseSection(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'What Clients Say',
+            'Videos',
             textAlign: TextAlign.center,
             style: context.typography.headlineLarge,
           ),
           Sizes.s16.spaceY,
           const Text(
-            'I highly recommend them for any business looking to improve their online presence',
+            'Some online lectures delivered by me',
             textAlign: TextAlign.center,
           ),
           Sizes.s16.spaceY,
@@ -47,7 +44,7 @@ class ReviewsSection extends ConsumerWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: reviewCards,
+                children: videoCards,
               ),
             ),
           ),

@@ -7,6 +7,7 @@ import '../entities/review_data.dart';
 import '../entities/services_data.dart';
 import '../entities/skill_data.dart';
 import '../entities/user_data.dart';
+import '../entities/video_data.dart';
 
 class DataRepo {
   const DataRepo();
@@ -41,6 +42,12 @@ class DataRepo {
 
   Future<List<ReviewData>> getReviews() async {
     final docs = await reviewsRef.get().then((d) => d.docs);
+    final data = docs.map((e) => e.data());
+    return data.toList()..sort();
+  }
+
+  Future<List<VideoData>> getVideos() async {
+    final docs = await videosRef.get().then((d) => d.docs);
     final data = docs.map((e) => e.data());
     return data.toList()..sort();
   }
@@ -92,6 +99,13 @@ class DataRepo {
       .withConverter(
         fromFirestore: (doc, _) => ReviewData.fromMap(doc.data()),
         toFirestore: (review, _) => review.toMap(),
+      );
+
+  static final videosRef = firestore
+      .collection('videos') //
+      .withConverter(
+        fromFirestore: (doc, _) => VideoData.fromMap(doc.data()),
+        toFirestore: (video, _) => video.toMap(),
       );
 }
 

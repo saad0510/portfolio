@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../entities/video_data.dart';
 import '../../theme/sizes.dart';
@@ -25,7 +26,7 @@ class VideoCard extends StatelessWidget {
           elevation: 2,
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {},
+            onTap: () => launchUrlString(video.url),
             child: Stack(
               fit: StackFit.expand,
               children: [

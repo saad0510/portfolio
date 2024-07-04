@@ -38,7 +38,7 @@ class AboutSection extends StatelessWidget {
                 child: Image.network(
                   user.images[1],
                   height: double.infinity,
-                  width: 350,
+                  width: 300,
                   cacheHeight: 1080,
                   alignment: Alignment.topLeft,
                   fit: BoxFit.fitWidth,

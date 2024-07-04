@@ -1,12 +1,14 @@
 import '../core/extensions/json_ext.dart';
 
 class SocialLinks {
+  final String website;
   final String googleForm;
   final String meetingLink;
   final String githubLink;
   final String linkedinLink;
 
   const SocialLinks({
+    required this.website,
     required this.googleForm,
     required this.meetingLink,
     required this.githubLink,
@@ -15,6 +17,7 @@ class SocialLinks {
 
   Map<String, dynamic> toMap() {
     return {
+      'website': website,
       'google_form': googleForm,
       'meeting': meetingLink,
       'github': githubLink,
@@ -26,6 +29,7 @@ class SocialLinks {
     final map = Map.from(data ?? {});
 
     return SocialLinks(
+      website: map.decodeStr('website'),
       googleForm: map.decodeStr('google_form'),
       meetingLink: map.decodeStr('meeting'),
       githubLink: map.decodeStr('github'),

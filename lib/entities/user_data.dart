@@ -42,6 +42,7 @@ class UserData {
           awardsWon: 0,
         ),
         links = const SocialLinks(
+          website: '',
           googleForm: '',
           meetingLink: '',
           githubLink: '',

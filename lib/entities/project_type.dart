@@ -23,8 +23,8 @@ enum ProjectType {
   double? height({bool compact = false}) {
     return switch (this) {
       ProjectType.mobile => 500,
-      ProjectType.web => compact ? null : 400,
-      ProjectType.desktop => compact ? null : 400,
+      ProjectType.web => compact ? null : 300,
+      ProjectType.desktop => compact ? null : 300,
     };
   }
 

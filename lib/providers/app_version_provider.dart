@@ -14,9 +14,8 @@ final appVersionProvider = FutureProvider<String>(
     final remoteVersion = await ref.read(dataRepoProvider).getAppVersion();
     await prefs.setString('app_version', remoteVersion);
 
-    if (localVersion != remoteVersion) {
-      window.location.reload();
-    }
+    final shouldRefresh = localVersion != null && localVersion != remoteVersion;
+    if (shouldRefresh) window.location.reload();
 
     return remoteVersion;
   },

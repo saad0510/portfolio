@@ -1,9 +1,15 @@
+import 'dart:ui';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import 'controllers/navigation_controller.dart';
 import 'core/database/app_boxes.dart';
+import 'core/extensions/context_ext.dart';
+import 'core/utils/error_screen.dart';
+import 'errorr_logger.dart';
 import 'firebase_options.dart';
 import 'theme/app_theme.dart';
 import 'ui/screens/home_screen.dart';
@@ -24,6 +30,7 @@ class MyApp extends StatelessWidget {
     return MaxWidthBox(
       maxWidth: 2000,
       child: ProviderScope(
+        observers: const [ErrorrLogger()],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Saad Portfolio',
@@ -36,9 +43,35 @@ class MyApp extends StatelessWidget {
               const Breakpoint(start: 921, end: 1920, name: DESKTOP),
             ],
           ),
+          navigatorKey: kRootNavigationKey,
           home: const HomeScreen(),
         ),
       ),
     );
   }
+}
+
+void registerErrorHandlers() {
+  FlutterError.onError = (details) {
+    FlutterError.presentError(details);
+  };
+
+  PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+    kRootContext.showScreenModal(
+      ErrorScreen(
+        title: 'Platform Dispatcher',
+        message: error.toString(),
+        stackTrace: stack,
+      ),
+    );
+    return true;
+  };
+
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    return ErrorScreen(
+      title: details.summary.name,
+      message: details.summary.toDescription(),
+      stackTrace: details.stack,
+    );
+  };
 }

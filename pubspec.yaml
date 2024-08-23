@@ -19,6 +19,7 @@ dependencies:
   flutter_riverpod: ^2.5.1
   shared_preferences: ^2.2.3
   web: ^0.5.1
+  firebase_analytics: ^11.2.1
 
 dev_dependencies:
   flutter_test:

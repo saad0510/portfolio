@@ -1,17 +1,29 @@
 {
-  "hosting": {
-    "public": "build/web",
-    "site": "saadbinkhalid",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
+    "hosting": {
+        "public": "build/web",
+        "site": "saadbinkhalid",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ],
+        "rewrites": [
+            {
+                "source": "**",
+                "destination": "/index.html"
+            }
+        ]
+    },
+    "flutter": {
+        "platforms": {
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "saadbinkhalid-portfolio",
+                    "configurations": {
+                        "web": "1:353807303633:web:058aaaa9f69f9141d216f0"
+                    }
+                }
+            }
+        }
+    }
 }

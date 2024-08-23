@@ -56,6 +56,7 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyCT9cEMjF_SW9jMxBBYmCaSfwFgZ2hKMp0',
     appId: '1:353807303633:web:058aaaa9f69f9141d216f0',
     messagingSenderId: '353807303633',
+    measurementId: 'G-N3027V2RD9',
     projectId: 'saadbinkhalid-portfolio',
     authDomain: 'saadbinkhalid-portfolio.firebaseapp.com',
     storageBucket: 'saadbinkhalid-portfolio.appspot.com',

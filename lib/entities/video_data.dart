@@ -29,7 +29,7 @@ class VideoData extends Sortable {
   }
 
   factory VideoData.fromMap(dynamic data) {
-    final map = Map.from(data ?? {});
+    final map = decodeMap(data);
 
     return VideoData(
       id: map.decodeStr('id'),

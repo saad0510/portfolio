@@ -12,6 +12,13 @@ extension DeSerializationExt on Map {
   }
 
   List decodeList(String key) {
-    return List.from(this[key] ?? []);
+    final value = this[key];
+    if (value is List) return value;
+    return [];
   }
+}
+
+Map decodeMap(dynamic data) {
+  if (data is Map) return data;
+  return {};
 }

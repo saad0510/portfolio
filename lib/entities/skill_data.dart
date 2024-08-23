@@ -23,7 +23,7 @@ class SkillData extends Sortable {
   }
 
   factory SkillData.fromMap(dynamic data) {
-    final map = Map.from(data ?? {});
+    final map = decodeMap(data);
 
     return SkillData(
       id: map.decodeStr('id'),

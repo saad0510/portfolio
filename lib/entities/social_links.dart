@@ -26,7 +26,7 @@ class SocialLinks {
   }
 
   factory SocialLinks.fromMap(dynamic data) {
-    final map = Map.from(data ?? {});
+    final map = decodeMap(data);
 
     return SocialLinks(
       website: map.decodeStr('website'),

@@ -26,7 +26,7 @@ class EducationData extends Sortable {
   }
 
   factory EducationData.fromMap(dynamic data) {
-    final map = Map.from(data ?? {});
+    final map = decodeMap(data);
 
     return EducationData(
       id: map.decodeStr('id'),

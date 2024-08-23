@@ -66,7 +66,7 @@ class UserData {
   }
 
   factory UserData.fromMap(dynamic data) {
-    final map = Map.from(data ?? {});
+    final map = decodeMap(data);
 
     return UserData(
       id: map.decodeStr('id'),

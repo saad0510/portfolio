@@ -28,7 +28,7 @@ class ServicesData extends Sortable {
   }
 
   factory ServicesData.fromMap(dynamic data) {
-    final map = Map.from(data ?? {});
+    final map = decodeMap(data);
 
     return ServicesData(
       id: map.decodeStr('id'),

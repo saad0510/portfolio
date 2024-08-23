@@ -38,7 +38,7 @@ class ReviewData extends Sortable {
   }
 
   factory ReviewData.fromMap(dynamic data) {
-    final map = Map.from(data ?? {});
+    final map = decodeMap(data);
 
     return ReviewData(
       id: map.decodeStr('id'),

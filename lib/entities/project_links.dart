@@ -26,7 +26,7 @@ class ProjectLinks {
   }
 
   factory ProjectLinks.fromMap(dynamic data) {
-    final map = Map.from(data ?? {});
+    final map = decodeMap(data);
 
     return ProjectLinks(
       github: map.decodeStr('github'),

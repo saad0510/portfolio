@@ -37,7 +37,7 @@ class ProjectData extends Sortable {
   }
 
   factory ProjectData.fromMap(dynamic data) {
-    final map = Map.from(data ?? {});
+    final map = decodeMap(data);
 
     return ProjectData(
       id: map.decodeStr('id'),

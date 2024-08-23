@@ -8,8 +8,9 @@ enum ProjectType {
   String toMap() => name;
 
   static ProjectType fromMap(dynamic data) {
-    final str = data?.toString().trim() ?? '';
-    return values.byName(str);
+    final str = data?.toString().trim().toLowerCase() ?? '';
+    final i = values.indexWhere((v) => v.name == str);
+    return i.isNegative ? values.first : values[i];
   }
 
   double? width({bool compact = false}) {

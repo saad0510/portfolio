@@ -70,7 +70,7 @@ class AboutText extends ConsumerStatefulWidget {
 }
 
 class _AboutTextState extends ConsumerState<AboutText> with TickerProviderStateMixin {
-  late final tabController = TabController(length: 3, vsync: this);
+  late final tabController = TabController(length: 3, vsync: this, initialIndex: 1);
 
   @override
   Widget build(BuildContext context) {

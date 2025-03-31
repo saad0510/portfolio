@@ -6,7 +6,7 @@ import 'app_fonts.dart';
 import 'sizes.dart';
 
 class AppButtonsStyles {
-  static final primaryOverlay = AppColors.purple.shade200;
+  static final primaryOverlay = AppColors.blue.shade200;
   static final secondaryForeground = AppColors.gray.shade600;
   static final secondaryBackground = AppColors.gray.shade100;
   static final secondaryOverlay = AppColors.gray.shade400;

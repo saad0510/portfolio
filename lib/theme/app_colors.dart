@@ -8,7 +8,7 @@ class AppColors {
     // primary
     primary: primary,
     onPrimary: white,
-    primaryContainer: purple.shade25,
+    primaryContainer: blue.shade25,
     onPrimaryContainer: gray.shade600,
     secondary: Colors.transparent,
     onSecondary: Colors.transparent,
@@ -23,7 +23,7 @@ class AppColors {
     onErrorContainer: red.shade600,
   );
 
-  static final primary = purple.shade500;
+  static final primary = blue.shade600;
   static const white = Color(0xFFFFFFFF);
 
   static const gray = MaterialColor(

@@ -23,7 +23,7 @@ class AppColors {
     onErrorContainer: red.shade600,
   );
 
-  static final primary = blue.shade500;
+  static final primary = blue.shade600;
   static const white = Color(0xFFFFFFFF);
 
   static const gray = MaterialColor(

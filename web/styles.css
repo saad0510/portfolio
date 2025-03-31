@@ -16,7 +16,7 @@ body {
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    color: #0EB3F9;
+    color: #0A8BD6;
 }
 
 .loader:before,
@@ -34,7 +34,7 @@ body {
 }
 
 .loader:after {
-    color: #0EB3F9;
+    color: #0A8BD6;
     transform: rotateY(70deg);
     animation-delay: .4s;
 }
